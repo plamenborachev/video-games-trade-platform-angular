@@ -1,0 +1,33 @@
+.navigation > nav {
+    background-color: #00c3e3;
+    width: 100%;
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+    margin-top: 0;
+    margin: 0%;
+    height: 70px;
+  }
+  
+  .navigation > nav img {
+    width: 4%;
+    padding-left: 1%;
+  }
+  
+  .navigation > nav ul {
+    margin: 0 0 0 auto;
+    padding-right: 5%;
+  }
+  
+  .navigation > nav li {
+    display: inline-block;
+    list-style-type: none;
+    padding-left: 30px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .navigation > nav li a {
+    text-decoration: none;
+    color: white;
+  }
