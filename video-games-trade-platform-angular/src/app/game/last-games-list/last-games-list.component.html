@@ -1,0 +1,18 @@
+<div class="last-game">
+    @if (isLoading) {
+        <app-loader />
+    } @else {
+        @for (game of games; track $index) {
+            <div class="info">
+                <h2 class="title">{{game.title}}</h2>                
+                <h4 class="seller">Seller: {{game.owner.username}}</h4>
+                <h4 class="price">Price: €{{game.price}}</h4>
+                <h4 class="added-on">Added on: {{game.createdAt}}</h4>
+                <h4 class="likes">Likes: {{game.likesList.length}}</h4>
+                <div class="learn-more">
+                    <a href="#">Details...</a>
+                </div>
+            </div>
+        }
+    }
+</div>

@@ -2,21 +2,21 @@ import Game from '../models/Game.js'
 
 const getAll = () => Game.find();
 
-const getTopThree = () => Game.find().sort({createdAt: -1}).limit(3);
+const getTopThree = () => Game.find().populate('owner').sort({createdAt: -1}).limit(3);
 
 const getServicesCreatedByUser = (ownerId) => Game.find({owner: ownerId});
 
-const getCoursesSignedUpByUser = (userId) => Game.find({ signUpList: userId});
+const getCoursesSignedUpByUser = (userId) => Game.find({ likesList: userId});
 
 const create = (course, ownerId) => Game.create({ ...course, owner: ownerId });
 
-const getOne = (courseId) => Game.findById(courseId).populate('signUpList');
+const getOne = (courseId) => Game.findById(courseId).populate('likesList');
 
 const signUp = (courseId, userId) => {
     // const movie = await Movie.findById(movieId);
     // movie.casts.push(castId);
     // return movie.save();
-    return Game.findByIdAndUpdate(courseId, { $push: { signUpList: userId } });
+    return Game.findByIdAndUpdate(courseId, { $push: { likesList: userId } });
 };
 
 const remove = (courseId) => Game.findByIdAndDelete(courseId);

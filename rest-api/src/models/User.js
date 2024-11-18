@@ -24,6 +24,9 @@ const userSchema = new Schema({
         required: [true, 'Password is required!'],
         minLength: [PASSWORD_MIN_LENGTH, `The password should be at least ${PASSWORD_MIN_LENGTH} characters long, got '{VALUE}'!`],
     },
+},
+{
+    timestamps: true
 });
 
 // Hash password before save

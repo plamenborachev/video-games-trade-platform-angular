@@ -27,7 +27,7 @@ const gameSchema = new Schema({
         required: [true, 'Price is required!'],
         min: [0, 'The Price should be a positive number, got \'{VALUE}\'!'],
     }, 
-    signUpList: [
+    likesList: [
         {
             type: Types.ObjectId,
             ref: 'User'
@@ -44,7 +44,7 @@ const gameSchema = new Schema({
 );
 
 // courseSchema.method('getUsername', function () {
-//     return this.signUpList.map(x => x.username);
+//     return this.likesList.map(x => x.username);
 // })
 
 const Game = model('Game', gameSchema);

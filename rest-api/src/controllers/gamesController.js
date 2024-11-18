@@ -149,8 +149,8 @@ async function checkOwnerAndSignedUp(req, res) {
     }
 
     const isOwner = course?.owner && course.owner.toString() === userId;
-    const signedUp = course?.signUpList?.some(signUp => signUp._id.toString() === userId);
-    const signUps = course?.signUpList?.map(signUp => signUp.email).join(', ');
+    const signedUp = course?.likesList?.some(signUp => signUp._id.toString() === userId);
+    const signUps = course?.likesList?.map(signUp => signUp.email).join(', ');
 
     // console.log(signUps);
 

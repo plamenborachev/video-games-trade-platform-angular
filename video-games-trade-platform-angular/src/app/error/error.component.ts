@@ -4,10 +4,8 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-error',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './error.component.html',
   styleUrl: './error.component.css'
 })
-export class ErrorComponent {
-
-}
+export class ErrorComponent {}
