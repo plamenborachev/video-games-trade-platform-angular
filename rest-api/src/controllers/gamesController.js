@@ -7,47 +7,47 @@ import userService from "../services/userService.js";
 const gamesController = Router();
 
 gamesController.post('/create', isAuth, async (req, res) => {
-    const courseData = req.body;
+    const gameData = req.body;
     const ownerId = req.user._id;
 
     //console.log(deviceData);
 
     try {
-        const course = await gamesService.create(courseData, ownerId);
-        // res.redirect('/courses/catalog');
-        res.json(course);
+        const game = await gamesService.create(gameData, ownerId);
+        // res.redirect('/games/catalog');
+        res.json(game);
     } catch (err) {
         // const errorMessage = getErrorMessage(err);
-        // return res.render('course/create', { error: errorMessage, course: courseData, title: 'Create Page'});
+        // return res.render('game/create', { error: errorMessage, game: gameData, title: 'Create Page'});
         res.status(400).json({ message: getErrorMessage(err) });
     }
 });
 
 gamesController.get('/catalog', async (req, res) => {
-    const courses = await gamesService.getAll().lean();
-    // res.render('course/catalog', { courses, title: 'Catalog Page'});
-    res.json(courses);
+    const games = await gamesService.getAll().lean();
+    // res.render('game/catalog', { games, title: 'Catalog Page'});
+    res.json(games);
 });
 
-gamesController.get('/details/:courseId', async (req, res) => {
-    // const { course, owner, isOwner, signedUp, signUps } = await checkOwnerAndSignedUp(req, res);
+gamesController.get('/details/:gameId', async (req, res) => {
+    const { game, owner, isOwner, signedUp, signUps } = await checkOwnerAndSignedUp(req, res);
 
     // console.log(device.preferredList);
     // console.log(req.user?._id);
     // console.log(isOwner);
     // console.log(preferred);
 
-    // res.render('course/details', { course, owner, isOwner , signedUp, signUps, title: 'Details Page'});
+    // res.render('game/details', { game, owner, isOwner , signedUp, signUps, title: 'Details Page'});
 
-    const course = await gamesService.getOne(req.params.courseId);
+    // const game = await gamesService.getOne(req.params.gameId);
 
-    res.json(course);
+    res.json({game, owner, isOwner, signedUp, signUps});
 });
 
-gamesController.get('/signUp/:courseId', isAuth, async (req, res) => {
-    const courseId = req.params.courseId;
+gamesController.get('/signUp/:gameId', isAuth, async (req, res) => {
+    const gameId = req.params.gameId;
     const userId = req.user._id;
-    const { course, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
+    const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
 
     // console.log(device.preferredList);
     // console.log(req.user?._id);
@@ -55,106 +55,104 @@ gamesController.get('/signUp/:courseId', isAuth, async (req, res) => {
     // console.log(preferred);
 
     if (isOwner){
-        // return res.render('course/details',
-        //     { error: `You are owner of ${course.title} and can not sign up for it!`, course, owner, isOwner, signedUp, signUps, title: 'Details Page'});
+        // return res.render('game/details',
+        //     { error: `You are owner of ${game.title} and can not sign up for it!`, game, owner, isOwner, signedUp, signUps, title: 'Details Page'});
         // res.setError('You cannot vote for this volcano!');
         // return res.redirect('/404');
         return res.status(400).json({ message: 'You cannot like this game!' });
     }   
 
     if (signedUp){
-        // return res.already signed render('course/details',
-        //     { error: 'You\'ve up for this course!', course, owner, isOwner, signedUp, signUps, title: 'Details Page'});
+        // return res.already signed render('game/details',
+        //     { error: 'You\'ve up for this game!', game, owner, isOwner, signedUp, signUps, title: 'Details Page'});
         return res.status(400).json({ message: 'You have already liked this game!' });
     }
 
     try {        
-        const signUpCourse = await gamesService.signUp(courseId, userId);
-        // res.redirect(`/courses/details/${courseId}`);
-        res.json(signUpCourse);
+        const signUpGame = await gamesService.signUp(gameId, userId);
+        // res.redirect(`/games/details/${gameId}`);
+        res.json(signUpGame);
     } catch(err){ 
         res.status(400).json({ message: getErrorMessage(err) });
     }    
 });
 
-gamesController.put('/edit/:courseId', isAuth, async (req, res) => {
-    const courseData = req.body;
-    const courseId = req.params.courseId;
+gamesController.put('/edit/:gameId', isAuth, async (req, res) => {
+    const gameData = req.body;
+    const gameId = req.params.gameId;
 
-    const { course, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
+    const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
 
     if (!isOwner) {
         // return res.render('device/details',
-        //     { course, isOwner: false, signedUp, signUps, error: 'You cannot edit this course!', title: 'Details Page'});
+        //     { game, isOwner: false, signedUp, signUps, error: 'You cannot edit this game!', title: 'Details Page'});
         // res.setError('You cannot delete this movie!');
         // return res.redirect('/404');
         return res.status(400).json({ message: 'You cannot edit this game!' });
     }  
 
     try {
-        const updatedGame = await gamesService.edit(courseId, courseData);
-        // res.redirect(`/courses/details/${courseId}`);
+        const updatedGame = await gamesService.edit(gameId, gameData);
+        // res.redirect(`/games/details/${gameId}`);
         res.json(updatedGame);
     } catch (err) {
         // const errorMessage = getErrorMessage(err);
-        // return res.render('course/edit', { error: errorMessage, course: courseData, title: 'Edit Page' });
+        // return res.render('game/edit', { error: errorMessage, game: gameData, title: 'Edit Page' });
         res.status(400).json({ message: getErrorMessage(err) });
     }
 });
 
-gamesController.delete('/delete/:courseId', isAuth, async (req, res) => {
-    const courseId = req.params.courseId;
-    const { course, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
+gamesController.delete('/delete/:gameId', isAuth, async (req, res) => {
+    const gameId = req.params.gameId;
+    const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
 
     // Check if owner
     if (!isOwner) {
-        // return res.render('course/details',
-        //     { course, owner, isOwner: false, signedUp, signUps, error: 'You cannot delete this course!', title: 'Details Page'});
+        // return res.render('game/details',
+        //     { game, owner, isOwner: false, signedUp, signUps, error: 'You cannot delete this game!', title: 'Details Page'});
         // res.setError('You cannot delete this volcano!');
         // return res.redirect('/404');
         return res.status(400).json({ message: 'You cannot delete this game!' });
     }
 
     try {
-        await gamesService.remove(courseId);
-        // res.redirect('/courses/catalog');
+        await gamesService.remove(gameId);
+        // res.redirect('/games/catalog');
         res.status(204).end();
     } catch (err) {
-        // console.log(err);       
-        // const errorMessage = getErrorMessage(err);
-        // return res.render('volcano/details', { volcano: volcano, error: err , title: 'Details'});
+        // console.log(err);
         res.status(400).json({ message: getErrorMessage(err) })
     }
 });
 
 async function checkOwnerAndSignedUp(req, res) {
-    const courseId = req.params.courseId;
+    const gameId = req.params.gameId;
     const userId = req.user?._id;
-    let course = null;
+    let game = null;
     let owner = null;
 
     try {
-        course = await gamesService.getOne(courseId).lean();
-        owner = await userService.owner(course?.owner).lean();
+        game = await gamesService.getOne(gameId).lean();
+        owner = await userService.owner(game?.owner).lean();
     } catch (err){
         console.log(err);
         res.status(400).json({ message: getErrorMessage(err) });
     }
 
-    //console.log(course);
+    //console.log(game);
     //console.log(owner);
 
-    if (!course){
+    if (!game){
         return res.status(400).json({ message: 'Game does not exists!' });
     }
 
-    const isOwner = course?.owner && course.owner.toString() === userId;
-    const signedUp = course?.likesList?.some(signUp => signUp._id.toString() === userId);
-    const signUps = course?.likesList?.map(signUp => signUp.email).join(', ');
+    const isOwner = game?.owner && game.owner.toString() === userId;
+    const signedUp = game?.likesList?.some(signUp => signUp._id.toString() === userId);
+    const signUps = game?.likesList?.map(signUp => signUp.email).join(', ');
 
     // console.log(signUps);
 
-    return { course, owner, isOwner, signedUp, signUps};
+    return { game, owner, isOwner, signedUp, signUps};
 }
 
 export default gamesController;

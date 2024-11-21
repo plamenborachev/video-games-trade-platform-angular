@@ -13,9 +13,6 @@ const create = (course, ownerId) => Game.create({ ...course, owner: ownerId });
 const getOne = (courseId) => Game.findById(courseId).populate('likesList');
 
 const signUp = (courseId, userId) => {
-    // const movie = await Movie.findById(movieId);
-    // movie.casts.push(castId);
-    // return movie.save();
     return Game.findByIdAndUpdate(courseId, { $push: { likesList: userId } });
 };
 

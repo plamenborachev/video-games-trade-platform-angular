@@ -14,4 +14,14 @@ export class ApiService {
         let url = `${apiUrl}/`;
         return this.http.get<Game[]>(url);
     }
+
+    getOne(id: string){
+        const { apiUrl } = environment;
+        return this.http.get(`${apiUrl}/games/details/${id}`);
+    }
+
+    remove(id: string){
+        const { apiUrl } = environment;
+        return this.http.delete(`${apiUrl}/games/delete/${id}`);
+    }
 }

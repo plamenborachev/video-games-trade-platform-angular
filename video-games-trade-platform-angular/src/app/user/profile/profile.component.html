@@ -1,0 +1,34 @@
+<section id="user">
+    <div class="user-info">
+        <div class="user-logo">
+            <img src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745">
+        </div>
+        <h1 class="user-email"></h1>
+        <h2 class="created-game-count">Total Created Games: </h2>
+        <h2 class="sign-game-count">Total Liked Games: </h2>
+    </div>
+</section>
+
+<section class="profile-game">
+    <div class="created-game">
+        <h2 class="section-title">Created Games</h2>
+             <!-- {{#each gamesCreated}}
+                {{>game-created-profile}}
+            {{else}} -->
+                  <!-- If there are no created game-->
+                    <h2 class="no-game-in-profile">You haven't created a game yet...</h2>                
+            <!-- {{/each}}         -->
+    </div>
+  
+    
+
+    <div class="sign-game">
+        <h2 class="section-title">Liked games</h2>
+             <!-- {{#each gamesSignedUp}}
+                {{>game-signed-profile}}
+            {{else}} -->
+                <!-- If there are no followed game -->
+                <h2 class="no-game-in-profile">You haven't liked any game yet...</h2>                
+            <!-- {{/each}}         -->
+    </div>
+</section>

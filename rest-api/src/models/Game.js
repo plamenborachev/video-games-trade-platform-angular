@@ -43,10 +43,6 @@ const gameSchema = new Schema({
 }
 );
 
-// courseSchema.method('getUsername', function () {
-//     return this.likesList.map(x => x.username);
-// })
-
 const Game = model('Game', gameSchema);
 
 export default Game;

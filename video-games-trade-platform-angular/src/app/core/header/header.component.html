@@ -5,15 +5,15 @@
             
             <ul>
                 <!-- Guest users and Logged users -->
-                <li><a href="#">Home</a></li>
-                <li><a href="#">All Games</a></li>
+                <li><a routerLink="/home">Home</a></li>
+                <li><a routerLink="/catalog">All Games</a></li>
                 <!--For guest users-->
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a routerLink="/login">Login</a></li>
+                <li><a routerLink="/register">Register</a></li>
                 <!--For loggin users-->
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Create Game Offer</a></li>
-                <li><a href="#">Logout</a></li>    
+                <li><a routerLink="/profile">Profile</a></li>
+                <li><a routerLink="/games/create">Create Game Offer</a></li>
+                <li><a (click)="logout()">Logout</a></li>    
                 <!-- {{#if user}}<em>{{user.email}}</em>{{/if}} -->
             </ul>
         </nav>

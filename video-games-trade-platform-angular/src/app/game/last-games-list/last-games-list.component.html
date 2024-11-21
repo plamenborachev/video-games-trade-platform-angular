@@ -10,7 +10,7 @@
                 <h4 class="added-on">Added on: {{game.createdAt}}</h4>
                 <h4 class="likes">Likes: {{game.likesList.length}}</h4>
                 <div class="learn-more">
-                    <a href="#">Details...</a>
+                    <a [routerLink]="['/games/details', game._id]">Details...</a>
                 </div>
             </div>
         }
