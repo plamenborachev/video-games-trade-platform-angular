@@ -15,13 +15,21 @@ export class ApiService {
         return this.http.get<Game[]>(url);
     }
 
+    getAll(){
+        const { apiUrl } = environment;
+        let url = `${apiUrl}/games/catalog`;
+        return this.http.get<Game[]>(url);
+    }    
+
     getOne(id: string){
         const { apiUrl } = environment;
-        return this.http.get(`${apiUrl}/games/details/${id}`);
+        let url = `${apiUrl}/games/details/${id}`;
+        return this.http.get(url);
     }
 
     remove(id: string){
         const { apiUrl } = environment;
-        return this.http.delete(`${apiUrl}/games/delete/${id}`);
+        let url = `${apiUrl}/games/delete/${id}`;
+        return this.http.delete(url);
     }
 }

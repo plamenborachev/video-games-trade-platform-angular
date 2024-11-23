@@ -6,25 +6,25 @@ const getTopThree = () => Game.find().populate('owner').sort({createdAt: -1}).li
 
 const getServicesCreatedByUser = (ownerId) => Game.find({owner: ownerId});
 
-const getCoursesSignedUpByUser = (userId) => Game.find({ likesList: userId});
+const getGamesSignedUpByUser = (userId) => Game.find({ likesList: userId});
 
-const create = (course, ownerId) => Game.create({ ...course, owner: ownerId });
+const create = (game, ownerId) => Game.create({ ...game, owner: ownerId });
 
-const getOne = (courseId) => Game.findById(courseId).populate('likesList');
+const getOne = (gameId) => Game.findById(gameId).populate('likesList');
 
-const signUp = (courseId, userId) => {
-    return Game.findByIdAndUpdate(courseId, { $push: { likesList: userId } });
+const signUp = (gameId, userId) => {
+    return Game.findByIdAndUpdate(gameId, { $push: { likesList: userId } });
 };
 
-const remove = (courseId) => Game.findByIdAndDelete(courseId);
+const remove = (gameId) => Game.findByIdAndDelete(gameId);
 
-const edit = (courseId, data) => Game.findByIdAndUpdate(courseId, data, {runValidators: true});
+const edit = (gameId, data) => Game.findByIdAndUpdate(gameId, data, {runValidators: true});
 
 export default {
     getAll,
     getTopThree,
     getServicesCreatedByUser,
-    getCoursesSignedUpByUser,
+    getGamesSignedUpByUser,
     create,
     getOne,
     signUp,

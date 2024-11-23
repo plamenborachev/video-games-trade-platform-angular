@@ -6,18 +6,18 @@ const homeController = Router();
 
 homeController.get('/', async (req, res) => {
     //Visualize the last 3 added post
-    const getTopThreeCourses = await gamesService.getTopThree().lean();
-    // res.render('home', { getTopThreeCourses, title: 'Home Page'});
-    res.json(getTopThreeCourses);
+    const getTopThreeGames = await gamesService.getTopThree().lean();
+    // res.render('home', { getTopThreeGames, title: 'Home Page'});
+    res.json(getTopThreeGames);
 });
 
 homeController.get('/profile', isAuth, async (req, res) => {
     const userId = req.user._id;
-    const coursesCreated = await gamesService.getServicesCreatedByUser(userId).lean();
-    const coursesSignedUp = await gamesService.getCoursesSignedUpByUser(userId).lean();
+    const gamesCreated = await gamesService.getServicesCreatedByUser(userId).lean();
+    const gamesSignedUp = await gamesService.getGamesSignedUpByUser(userId).lean();
     //console.log(devicesCreated);
-    // res.render('home/profile', {coursesCreated, coursesSignedUp, title: 'Profile Page'});
-    res.json({ coursesCreated, coursesSignedUp});
+    // res.render('home/profile', {gamesCreated, gamesSignedUp, title: 'Profile Page'});
+    res.json({ gamesCreated, gamesSignedUp});
 });
 
 // homeController.get('/about', (req, res) => {

@@ -31,3 +31,7 @@
     text-decoration: none;
     color: white;
   }
+
+  a {
+    cursor: pointer;
+  }

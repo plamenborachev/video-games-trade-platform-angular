@@ -3,13 +3,27 @@
         <h1>All Games</h1>
     </article>
 
-    <!--If there are game in the database, show each one-->
-    <!-- {{#each games}}
-        {{>game-catalog}}
-    {{else}} -->
-        <!--If there are still no blogs in the database display:-->
+    @if (games) {
+        @for (game of games; track $index) {
+            <article class="all-game-card">
+                <article class="all-game-card-image">
+                    <img src="{{game.image}}" alt="{{game.title}}">
+                </article>
+            
+                <article class="all-game-card-content">
+                    <h2>{{game.title}}</h2>
+                    <h3>Type: {{game.ganre}}</h3>
+                    <h3>Price: €{{game.price}}</h3>
+                </article>
+            
+                <article class="all-game-card-buttons">
+                    <a href="/games/details/{{game._id}}" class="btn-details">Details</a>
+                </article>
+            </article>
+        }
+    } @else {
         <article class="not-available-games">
             <h1>No game created yet.</h1>
         </article>
-    <!-- {{/each}}      -->
+    }
 </section>
