@@ -7,13 +7,13 @@ import { ApiService } from '../../api.service';
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, LoaderComponent],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
 export class CatalogComponent implements OnInit{
   games: Game[] = [];
-  // isLoading = true;
+  isLoading = true;
 
   constructor(private apiService: ApiService) {}
   
@@ -21,7 +21,7 @@ export class CatalogComponent implements OnInit{
     this.apiService.getAll().subscribe((games) => { 
       console.log(games);
       this.games = games;
-      // this.isLoading = false;
+      this.isLoading = false;
     });
   }
 }

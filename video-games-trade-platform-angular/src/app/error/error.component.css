@@ -1,5 +1,9 @@
 .not-found-page-container{
     color: white;
+    background-color: rgb(0, 195, 227, 0.8);
+    width: 90%;
+    margin: auto;
+    border-radius: 30px;
 }
 
 .not-found-page-container p a {

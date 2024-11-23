@@ -1,11 +1,75 @@
 <div class="login-box">
+
     <h1>Login</h1>
-    <form method="POST">
-        <label>Email</label>
-        <input type="text" placeholder="Email.." name="email" value="">
-        <label>Password</label>
-        <input type="password" placeholder="Password.." name="password">
-        <input type="submit" value="Submit">
+
+    <form class="login" #form="ngForm" (ngSubmit)="login(form)">
+        <label for="email">Email</label>
+        <input
+            [class]="(
+                (inputEmail?.touched && inputEmail?.errors?.['required']) || 
+                (inputEmail?.touched && inputEmail?.errors?.['pattern']))
+                ? 'input-error': ''"
+            type="email"
+            placeholder="Email.."
+            name="email"
+            id="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            ngModel
+            email="true"
+            #inputEmail="ngModel"
+            required
+        />
+
+        <!-- <p class="error">Email is required!</p> -->
+        <!-- <p class="error"> Email is not valid! </p> -->
+
+        @if(inputEmail?.touched){
+            <div>
+                @if(inputEmail?.errors?.['required']){
+                <p class="error">Email is required!</p>
+                }
+                <!--  -->
+                @if(inputEmail?.errors?.['pattern']){
+                <p class="error">Email is not valid!</p>
+                }
+            </div>
+        }
+
+        <label for="password">Password</label>
+        <input
+            [class]="(
+                (inputPassword?.touched && inputPassword?.errors?.['required']) || 
+                (inputPassword?.touched && inputPassword?.errors?.['minlength']))
+                ? 'input-error': ''"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password.."
+            ngModel
+            #inputPassword="ngModel"
+            required
+            minlength="5"
+        />
+
+        <!-- <p class="error">Password is required!</p>
+        <p class="error">Password must be at least 4 characters! </p> -->
+
+        @if(inputPassword?.touched){
+            <div>
+                @if(inputPassword?.errors?.['required']){
+                <p class="error">Password is required!</p>
+                }
+                <!--  -->
+                @if(inputPassword?.errors?.['minlength']){
+                <p class="error">Password must be at least 5 characters!</p>
+                }
+            </div>
+        }
+
+        <input type="submit" [disabled]="form.invalid" [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }" value="Login">
+        <!-- <button type="submit"> Login</button> -->
     </form>
-    <p>Not have an account? <a routerLink="/register">Register here</a></p>
+
+    <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+
 </div>

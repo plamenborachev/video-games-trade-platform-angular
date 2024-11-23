@@ -27,6 +27,12 @@ export class ApiService {
         return this.http.get(url);
     }
 
+    getProfile(){
+        const { apiUrl } = environment;
+        let url = `${apiUrl}/profile`;
+        return this.http.get(url);
+    }
+
     remove(id: string){
         const { apiUrl } = environment;
         let url = `${apiUrl}/games/delete/${id}`;

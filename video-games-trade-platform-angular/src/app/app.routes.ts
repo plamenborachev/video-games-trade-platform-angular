@@ -8,6 +8,7 @@ import { RegisterComponent } from './user/register/register.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { CatalogComponent } from './game/catalog/catalog.component';
 import { GameCreateComponent } from './game/game-create/game-create.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,9 +23,9 @@ export const routes: Routes = [
         path: 'games',
         children: [
             { path: 'details/:gameId', component: GameDetailsComponent },
-            { path: 'create', component: GameCreateComponent},
-            { path: 'edit/:gameId', component: GameEditComponent },
-            // { path: 'delete/:gameId', component: GameDeleteComponent }, //TODO
+            { path: 'create', component: GameCreateComponent, canActivate: [AuthGuard],},
+            { path: 'edit/:gameId', component: GameEditComponent, canActivate: [AuthGuard],},
+            // { path: 'delete/:gameId', component: GameDeleteComponent, canActivate: [AuthGuard],}, //TODO
             
         ]
     },

@@ -21,7 +21,8 @@
   }
   
   .all-game-card {
-    background: #f6f6f6;
+    /* background: #f6f6f6; */
+    background-color: rgb(0, 195, 227, 0.8);
     max-width: 700px;
     max-height: 164px;
     position: relative;

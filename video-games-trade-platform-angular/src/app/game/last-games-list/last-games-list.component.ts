@@ -7,7 +7,7 @@ import { LoaderComponent } from '../../shared/loader/loader.component';
 @Component({
   selector: 'app-last-games-list',
   standalone: true,
-  imports: [LoaderComponent, RouterLink],
+  imports: [RouterLink, LoaderComponent],
   templateUrl: './last-games-list.component.html',
   styleUrl: './last-games-list.component.css'
 })

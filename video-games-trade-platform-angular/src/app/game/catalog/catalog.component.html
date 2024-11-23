@@ -3,27 +3,31 @@
         <h1>All Games</h1>
     </article>
 
-    @if (games) {
-        @for (game of games; track $index) {
-            <article class="all-game-card">
-                <article class="all-game-card-image">
-                    <img src="{{game.image}}" alt="{{game.title}}">
+    @if(isLoading){
+        <app-loader />
+    } @else {
+        @if (games) {
+            @for (game of games; track $index) {
+                <article class="all-game-card">
+                    <article class="all-game-card-image">
+                        <img src="{{game.image}}" alt="{{game.title}}">
+                    </article>
+                
+                    <article class="all-game-card-content">
+                        <h2>{{game.title}}</h2>
+                        <h3>Ganre: {{game.ganre}}</h3>
+                        <h3>Price: €{{game.price}}</h3>
+                    </article>
+                
+                    <article class="all-game-card-buttons">
+                        <a routerLink="/games/details/{{game._id}}" class="btn-details">Details</a>
+                    </article>
                 </article>
-            
-                <article class="all-game-card-content">
-                    <h2>{{game.title}}</h2>
-                    <h3>Type: {{game.ganre}}</h3>
-                    <h3>Price: €{{game.price}}</h3>
-                </article>
-            
-                <article class="all-game-card-buttons">
-                    <a href="/games/details/{{game._id}}" class="btn-details">Details</a>
-                </article>
+            }
+        } @else {
+            <article class="not-available-games">
+                <h1>No game created yet.</h1>
             </article>
         }
-    } @else {
-        <article class="not-available-games">
-            <h1>No game created yet.</h1>
-        </article>
-    }
+    }    
 </section>
