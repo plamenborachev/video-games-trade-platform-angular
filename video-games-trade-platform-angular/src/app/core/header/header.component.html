@@ -9,7 +9,7 @@
                     <li><a routerLink="/catalog">All Games</a></li>
                 @if(isLoggedIn){
                     <!--For loggin users-->
-                    <li><a routerLink="/profile">Profile</a></li>
+                    <li><a routerLink="/profile">{{firstName}}'s Profile</a></li>
                     <li><a routerLink="/games/create">Create Game Offer</a></li>
                     <li><a (click)="logout()">Logout</a></li>    
                     <!-- {{#if user}}<em>{{user.email}}</em>{{/if}} -->

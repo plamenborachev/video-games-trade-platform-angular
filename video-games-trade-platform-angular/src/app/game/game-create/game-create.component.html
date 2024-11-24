@@ -1,1 +1,150 @@
-<p>game-create works!</p>
+<section id="create-container">
+    <div class="create-container-info">
+        <h1>Create Game</h1>
+
+        <form #form="ngForm" (ngSubmit)="addGame(form)">
+            <label for="title">Title:</label>
+            <input                
+                name="title"
+                type="text"
+                id="title"
+
+                [class]="(
+                    (inputGameName?.touched && inputGameName?.errors?.['required'])
+                    || (inputGameName?.touched && inputGameName?.errors?.['minlength']))
+                    ? 'input-error': ''"
+                ngModel
+                #inputGameName="ngModel"
+                required
+                minlength="5"
+            >
+            
+            @if(inputGameName?.touched){
+            <div>
+                @if(inputGameName?.errors?.['required']){
+                <p class="error">Game title is required</p>
+                }
+                @if(inputGameName?.errors?.['minlength']){
+                <p class="error">Game title must be at least 5 characters long</p>
+                }
+            </div>
+            }
+
+            <label for="ganre">Ganre:</label>
+            <input
+                name="ganre"
+                type="text"
+                id="ganre"
+                
+                [class]="(
+                    (inputGameGanre?.touched && inputGameGanre?.errors?.['required'])
+                    || (inputGameGanre?.touched && inputGameGanre?.errors?.['minlength']))
+                    ? 'input-error': ''"
+                ngModel
+                #inputGameGanre="ngModel"
+                required
+                minlength="5"
+            >
+
+            @if(inputGameGanre?.touched){
+            <div>
+                @if(inputGameGanre?.errors?.['required']){
+                <p class="error">Game ganre is required</p>
+                }
+                @if(inputGameGanre?.errors?.['minlength']){
+                <p class="error">Game ganre must be at least 5 characters long</p>
+                }
+            </div>
+            }
+
+            <label for="image">Image:</label>
+            <input
+                name="image"
+                type="text" id="image"
+                placeholder="http://... or https://..."
+                
+                [class]="(
+                    (inputGameImage?.touched && inputGameImage?.errors?.['required'])
+                    || (inputGameImage?.touched && inputGameImage?.errors?.['pattern']))
+                    ? 'input-error': ''"
+                ngModel
+                #inputGameImage="ngModel"
+                required
+                pattern="^https?:\/\/.+"                
+            >
+
+            @if(inputGameImage?.touched){
+                <div>
+                    @if(inputGameImage?.errors?.['required']){
+                    <p class="error">Game image is required</p>
+                    }
+                    @if(inputGameImage?.errors?.['pattern']){
+                    <p class="error">Game image url should start with http:// or https://</p>
+                    }
+                </div>
+                }
+
+            <label for="description">Description:</label>
+            <textarea
+                id="description"
+                name="description"
+                
+                [class]="(
+                    (inputGameDescription?.touched && inputGameDescription?.errors?.['required'])
+                    || (inputGameDescription?.touched && inputGameDescription?.errors?.['minlength']))
+                    ? 'input-error': ''"
+                ngModel
+                #inputGameDescription="ngModel"
+                required
+                minlength="10"            
+            >            
+            </textarea>
+
+            @if(inputGameDescription?.touched){
+            <div>
+                @if(inputGameDescription?.errors?.['required']){
+                <p class="error">Game description is required</p>
+                }
+                @if(inputGameDescription?.errors?.['minlength']){
+                <p class="error">Game description must be at least 10 characters long</p>
+                }
+            </div>
+            }
+
+            <label for="price">Price:</label>
+            <input
+                name="price"
+                type="number"
+                id="price"
+
+                [class]="(
+                    (inputGamePrice?.touched && inputGamePrice?.errors?.['required'])
+                    || (inputGamePrice?.touched && inputGamePrice?.errors?.['min']))
+                    ? 'input-error': ''"
+                ngModel
+                #inputGamePrice="ngModel"
+                required
+                min="0"            
+            >
+
+            @if(inputGamePrice?.touched){
+            <div>
+                @if(inputGamePrice?.errors?.['required']){
+                <p class="error">Game price is required</p>
+                }
+                @if(inputGamePrice?.errors?.['min']){
+                <p class="error">Game price must be positive number</p>
+                }
+            </div>
+            }
+
+            <input
+                type="submit"
+                id="btn"
+                [disabled]="form.invalid"
+                [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }"
+                value="Create"
+            />
+        </form>
+    </div>
+</section>

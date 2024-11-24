@@ -10,7 +10,7 @@ const gameSchema = new Schema({
     ganre: {
         type: String,
         required: [true, 'Ganre is required!'],
-        minLength: [3, 'The ganre should be at least 3 characters, got \'{VALUE}\'!'],
+        minLength: [5, 'The ganre should be at least 5 characters, got \'{VALUE}\'!'],
     },
     description: {
         type: String,

@@ -4,8 +4,8 @@
         <label for="username">Username</label>
         <input
         [class]="(
-            (inputUsername?.touched && inputUsername?.errors?.['required']) || 
-             (inputUsername?.touched && inputUsername?.errors?.['minlength']))
+            (inputUsername?.touched && inputUsername?.errors?.['required']) 
+            || (inputUsername?.touched && inputUsername?.errors?.['minlength']))
              ? 'input-error': ''"
         type="text"
         placeholder="Username.."
@@ -32,8 +32,8 @@
         <label for="email">Email</label>
         <input
             [class]="(
-                (inputEmail?.touched && inputEmail?.errors?.['required']) || 
-                (inputEmail?.touched && inputEmail?.errors?.['pattern']))
+                (inputEmail?.touched && inputEmail?.errors?.['required']) 
+                || (inputEmail?.touched && inputEmail?.errors?.['pattern']))
                 ? 'input-error': ''"
             type="email"
             placeholder="Email.."
@@ -61,8 +61,8 @@
         <label for="password">Password</label>
         <input
             [class]="(
-                (inputPassword?.touched && inputPassword?.errors?.['required']) || 
-                (inputPassword?.touched && inputPassword?.errors?.['minlength']))
+                (inputPassword?.touched && inputPassword?.errors?.['required']) 
+                || (inputPassword?.touched && inputPassword?.errors?.['minlength']))
                 ? 'input-error': ''"
             type="password"
             name="password"
@@ -92,8 +92,8 @@
         <label for="rePassword">Confirm Password</label>
         <input
             [class]="(
-                (inputRePassword?.touched && inputRePassword?.errors?.['required']) || 
-                (inputRePassword?.touched && inputRePassword?.errors?.['minlength']))
+                (inputRePassword?.touched && inputRePassword?.errors?.['required']) 
+                || (inputRePassword?.touched && inputRePassword?.errors?.['minlength']))
             ? 'input-error': ''"
             type="password"
             placeholder="Confirm Password.."
@@ -102,17 +102,20 @@
             ngModel
             #inputRePassword="ngModel"
             required
-            minlength="5"
+            minlength="5"        
         />
 
         @if(inputRePassword?.touched){
             <div>
                 @if(inputRePassword?.errors?.['required']){
-                <p class="error">Confirm Password is required!</p>
+                    <p class="error">Confirm Password is required!</p>
                 }
                 <!--  -->
                 @if(inputRePassword?.errors?.['minlength']){
-                <p class="error">Confirmed Password must be at least 5 characters!</p>
+                    <p class="error">Confirmed Password must be at least 5 characters!</p>
+                }
+                @if(inputRePassword?.errors?.['appMatchPassword']){
+                    <p class="error">Repeat password does not match password!</p>
                 }
             </div>
         }

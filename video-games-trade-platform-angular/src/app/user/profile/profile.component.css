@@ -32,7 +32,7 @@
     font-style: italic;
   }
   
-  .user-info .sign-game-count {
+  .user-info .like-game-count {
     text-align: center;
     font-size: 22px;
     padding-bottom: 10px;
@@ -45,7 +45,7 @@
     margin: 2%;
   }
   
-  .profile-game .sign-game,
+  .profile-game .like-game,
   .created-game {
     margin: 4px, 4px;
     padding: 4px;
@@ -76,7 +76,7 @@
     background: #ffeae7;
   }
   
-  .profile-game .sign-game .section-title {
+  .profile-game .like-game .section-title {
     text-align: center;
     color: black;
   }

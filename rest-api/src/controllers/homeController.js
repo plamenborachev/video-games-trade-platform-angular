@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { isAuth } from "../middlewares/authMiddleware.js";
 import gamesService from '../services/gameService.js';
+import userService from '../services/userService.js';
 
 const homeController = Router();
 
@@ -15,9 +16,10 @@ homeController.get('/profile', isAuth, async (req, res) => {
     const userId = req.user._id;
     const gamesCreated = await gamesService.getServicesCreatedByUser(userId).lean();
     const gamesSignedUp = await gamesService.getGamesSignedUpByUser(userId).lean();
+    const user = await userService.owner(userId).lean();
     //console.log(devicesCreated);
     // res.render('home/profile', {gamesCreated, gamesSignedUp, title: 'Profile Page'});
-    res.json({ gamesCreated, gamesSignedUp});
+    res.json({ gamesCreated, gamesSignedUp, user});
 });
 
 // homeController.get('/about', (req, res) => {
