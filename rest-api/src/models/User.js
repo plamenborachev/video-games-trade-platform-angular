@@ -19,6 +19,11 @@ const userSchema = new Schema({
         required: [true, 'Email is required!'],
         minLength: [EMAIL_MIN_LENGTH, `The email should be at least ${EMAIL_MIN_LENGTH} characters long, got '{VALUE}'!`],
     },
+    telephone: {
+        type: String,
+        required: [true, 'Telephone is required!'],
+        // minLength: [EMAIL_MIN_LENGTH, `The email should be at least ${EMAIL_MIN_LENGTH} characters long, got '{VALUE}'!`],
+    },
     password: {
         type: String,
         required: [true, 'Password is required!'],

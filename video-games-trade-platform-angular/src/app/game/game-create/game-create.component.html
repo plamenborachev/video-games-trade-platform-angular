@@ -8,6 +8,7 @@
                 name="title"
                 type="text"
                 id="title"
+                placeholder="Title.."
 
                 [class]="(
                     (inputGameName?.touched && inputGameName?.errors?.['required'])
@@ -35,6 +36,7 @@
                 name="ganre"
                 type="text"
                 id="ganre"
+                placeholder="Ganre.."
                 
                 [class]="(
                     (inputGameGanre?.touched && inputGameGanre?.errors?.['required'])
@@ -88,6 +90,7 @@
             <textarea
                 id="description"
                 name="description"
+                placeholder="Description.."
                 
                 [class]="(
                     (inputGameDescription?.touched && inputGameDescription?.errors?.['required'])
@@ -116,6 +119,7 @@
                 name="price"
                 type="number"
                 id="price"
+                placeholder="Price.."
 
                 [class]="(
                     (inputGamePrice?.touched && inputGamePrice?.errors?.['required'])

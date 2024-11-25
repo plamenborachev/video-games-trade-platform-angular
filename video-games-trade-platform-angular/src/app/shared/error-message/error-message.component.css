@@ -1,0 +1,15 @@
+.error{
+    color: #e70012;
+    font-weight: bold;
+    text-align: center;    
+  }
+
+  .center {
+    margin: auto;
+    margin-top: 20px;
+    width: 30%;
+    border: 3px solid #e70012;
+    padding: 10px;
+    background: #00c3e3;
+    border-radius: 30px;
+  }

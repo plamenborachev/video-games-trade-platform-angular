@@ -4,11 +4,7 @@
     <form [formGroup]="form" (ngSubmit)="register()">
         <label for="username">Username</label>
         <input
-        [class]="
-            isFieldTextMissing('username') || isNotMinLength
-              ? 'input-error'
-              : ''
-          "
+        [class]="isFieldTextMissing('username') || isNotMinLength ? 'input-error' : ''"
           type="text"
           name="username"
           id="username"
@@ -30,14 +26,12 @@
         
         <label for="email">Email</label>
         <input
-        [class]="
-        isFieldTextMissing('email') || isEmailNotValid ? 'input-error' : ''
-      "
-      type="email"
-      name="email"
-      id="email"
-      placeholder="Email.."
-      formControlName="email"
+          [class]="isFieldTextMissing('email') || isEmailNotValid ? 'input-error' : ''"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email.."
+          formControlName="email"
         />
 
         @if(form.get('email')?.touched){
@@ -48,6 +42,24 @@
             <!--  -->
             @if(form.get('email')?.errors?.['email']){
             <p class="error">Email is not valid!</p>
+            }
+        </div>
+        }
+
+        <label for="telephone">Telephone</label>
+        <input
+          [class]="isFieldTextMissing('telephone') ? 'input-error' : ''"
+          type="telephone"
+          name="telephone"
+          id="telephone"
+          placeholder="Telephone.."
+          formControlName="telephone"
+        />
+
+        @if(form.get('telephone')?.touched){
+        <div>
+            @if(form.get('telephone')?.errors?.['required']){
+            <p class="error">Telephone is required!</p>
             }
         </div>
         }
@@ -102,8 +114,7 @@
                   }
                 </div>
                 }
-        </div>
-        
+        </div>       
        
         <input type="submit" [disabled]="form.invalid" [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }" value="Register">
     </form>

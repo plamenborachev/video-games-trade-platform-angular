@@ -7,12 +7,12 @@ import { isGuest, isAuth } from "../middlewares/authMiddleware.js"
 const authController = Router();
 
 authController.post('/register', isGuest, async (req, res) => {
-    const { username, email, password, rePassword } = req.body;
+    const { username, email, telephone, password, rePassword } = req.body;
 
     //console.log(req.body);
 
     try{
-        const token = await authService.register(username, email, password, rePassword);
+        const token = await authService.register(username, email, telephone, password, rePassword);
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
         // res.redirect('/');
         res.json(token);

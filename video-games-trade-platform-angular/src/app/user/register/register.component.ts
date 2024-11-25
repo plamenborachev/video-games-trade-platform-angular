@@ -25,7 +25,7 @@ export class RegisterComponent {
       Validators.minLength(5),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    tel: new FormControl(''),
+    telephone: new FormControl('', [Validators.required]),
     passGroup: new FormGroup(
       {
         password: new FormControl('', [
@@ -57,7 +57,7 @@ export class RegisterComponent {
   get isEmailNotValid() {
     return (
       this.form.get('email')?.touched &&
-      this.form.get('email')?.errors?.['emailValidator']
+      this.form.get('email')?.errors?.['email']
     );
   }
 

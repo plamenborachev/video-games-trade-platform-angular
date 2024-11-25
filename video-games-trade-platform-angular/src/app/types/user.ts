@@ -2,6 +2,7 @@ export interface User{
   _id: string;
   username: string;
   email: string;
+  telephone: string;
   password: string;
   created_at: string;
   updatedAt: string;

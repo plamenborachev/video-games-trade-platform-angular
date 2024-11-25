@@ -4,7 +4,7 @@ import jwt from '../lib/jwt.js';
 import User from "../models/User.js";
 import { JWT_SECRET } from '../config/constants.js';
 
-const register = async (username, email, password, rePassword) => {    
+const register = async (username, email, telephone, password, rePassword) => {    
     const user = await User.findOne({ $or: [{email}, {username}] });
 
     if (password !== rePassword){
@@ -15,7 +15,7 @@ const register = async (username, email, password, rePassword) => {
         throw new Error('User already exists!');
     }
 
-    const newUser = await User.create({ username, email, password });
+    const newUser = await User.create({ username, email, telephone, password });
 
     return generateToken(newUser);
 }
@@ -40,7 +40,8 @@ const generateToken = async(user) => {
     const payload = {
         _id: user._id,
         email: user.email,
-        name: user.name,
+        name: user.username,
+        telephone: user.telephone,
     };
 
     const header = { expiresIn: '2h' };
