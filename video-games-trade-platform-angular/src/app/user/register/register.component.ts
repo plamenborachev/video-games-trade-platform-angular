@@ -1,27 +1,79 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
 import { UserService } from '../user.service';
-import { MatchPasswordDirective } from '../../directives/match-password.directive';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [RouterLink, FormsModule, MatchPasswordDirective],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
 })
 export class RegisterComponent {
   constructor(private userService: UserService, private router: Router) {}
 
-  register(form: NgForm) {
-    console.log(form.invalid);
-    if (form.invalid){
-      console.error('Invalid register form');
+  form = new FormGroup({
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    tel: new FormControl(''),
+    passGroup: new FormGroup(
+      {
+        password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(5),
+        ]),
+        rePassword: new FormControl('', [Validators.required]),
+      },
+      {
+        validators: [matchPasswordsValidator('password', 'rePassword')],
+      }
+    ),
+  });
+
+  isFieldTextMissing(controlName: string) {
+    return (
+      this.form.get(controlName)?.touched &&
+      this.form.get(controlName)?.errors?.['required']
+    );
+  }
+
+  get isNotMinLength() {
+    return (
+      this.form.get('username')?.touched &&
+      this.form.get('username')?.errors?.['minlength']
+    );
+  }
+
+  get isEmailNotValid() {
+    return (
+      this.form.get('email')?.touched &&
+      this.form.get('email')?.errors?.['emailValidator']
+    );
+  }
+
+  get passGroup() {
+    return this.form.get('passGroup');
+  }
+
+  register() {
+    if (this.form.invalid) {
       return;
     }
 
+    console.log(this.form.value);
+
     // this.userService.register(); //TODO
-    this.router.navigate(['/home']);
+    // this.router.navigate(['/home']);
+    this.form.reset();
   }
 }

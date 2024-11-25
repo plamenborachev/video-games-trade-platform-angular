@@ -1,124 +1,109 @@
 <div class="register-box">
     <h1>Register</h1>
-    <form #form="ngForm" (ngSubmit)="register(form)">
+
+    <form [formGroup]="form" (ngSubmit)="register()">
         <label for="username">Username</label>
         <input
-        [class]="(
-            (inputUsername?.touched && inputUsername?.errors?.['required']) 
-            || (inputUsername?.touched && inputUsername?.errors?.['minlength']))
-             ? 'input-error': ''"
-        type="text"
-        placeholder="Username.."
-        name="username"
-        id="username"
-        ngModel
-        #inputUsername="ngModel"
-        required
-        minlength="5"        
+        [class]="
+            isFieldTextMissing('username') || isNotMinLength
+              ? 'input-error'
+              : ''
+          "
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username.."
+          formControlName="username"
         />
 
-        @if(inputUsername?.touched){
-            <div>
-                @if(inputUsername?.errors?.['required']){
-                <p class="error">Username is required!</p>
-                }
-                <!--  -->
-                @if(inputUsername?.errors?.['minlength']){
-                <p class="error">Username must be at least 5 characters!</p>
-                }
-            </div>
+        @if(form.get('username')?.touched){
+        <div>
+            @if(form.get('username')?.errors?.['required']){
+            <p class="error">Username is required!</p>
+            }
+            <!--  -->
+            @if(form.get('username')?.errors?.['minlength']){
+            <p class="error">Username must be at least 5 characters!</p>
+            }
+        </div>
         }
         
         <label for="email">Email</label>
         <input
-            [class]="(
-                (inputEmail?.touched && inputEmail?.errors?.['required']) 
-                || (inputEmail?.touched && inputEmail?.errors?.['pattern']))
-                ? 'input-error': ''"
-            type="email"
-            placeholder="Email.."
-            name="email"
-            id="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-            ngModel
-            email="true"
-            #inputEmail="ngModel"
-            required
+        [class]="
+        isFieldTextMissing('email') || isEmailNotValid ? 'input-error' : ''
+      "
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Email.."
+      formControlName="email"
         />
 
-        @if(inputEmail?.touched){
-            <div>
-                @if(inputEmail?.errors?.['required']){
-                <p class="error">Email is required!</p>
-                }
-                <!--  -->
-                @if(inputEmail?.errors?.['pattern']){
-                <p class="error">Email is not valid!</p>
-                }
-            </div>
+        @if(form.get('email')?.touched){
+        <div>
+            @if(form.get('email')?.errors?.['required']){
+            <p class="error">Email is required!</p>
+            }
+            <!--  -->
+            @if(form.get('email')?.errors?.['email']){
+            <p class="error">Email is not valid!</p>
+            }
+        </div>
         }
         
-        <label for="password">Password</label>
-        <input
+        <div formGroupName="passGroup">
+            <label for="password">Password</label>
+            <input
             [class]="(
-                (inputPassword?.touched && inputPassword?.errors?.['required']) 
-                || (inputPassword?.touched && inputPassword?.errors?.['minlength']))
-                ? 'input-error': ''"
-            type="password"
-            name="password"
-            id="password"
-            placeholder="Password.."
-            ngModel
-            #inputPassword="ngModel"
-            required
-            minlength="5"
-        />
+                (passGroup?.get('password')?.touched &&
+                 passGroup?.get('password')?.errors?.['required'] ) ||
+                 (passGroup?.get('password')?.touched && 
+                 passGroup?.get('password')?.errors?.['minlength'])
+              ) ? 'input-error' : ''"
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password.."
+              formControlName="password"                
+            />
 
-        <!-- <p class="error">Password is required!</p>
-        <p class="error">Password must be at least 4 characters! </p> -->
-
-        @if(inputPassword?.touched){
+            @if(passGroup?.get('password')?.touched){
             <div>
-                @if(inputPassword?.errors?.['required']){
+                @if(passGroup?.get('password')?.errors?.['required']){
                 <p class="error">Password is required!</p>
                 }
                 <!--  -->
-                @if(inputPassword?.errors?.['minlength']){
+                @if(passGroup?.get('password')?.errors?.['minlength']){
                 <p class="error">Password must be at least 5 characters!</p>
                 }
             </div>
-        }
-        
-        <label for="rePassword">Confirm Password</label>
-        <input
+            }
+            
+            <label for="rePassword">Confirm Password</label>
+            <input
             [class]="(
-                (inputRePassword?.touched && inputRePassword?.errors?.['required']) 
-                || (inputRePassword?.touched && inputRePassword?.errors?.['minlength']))
-            ? 'input-error': ''"
-            type="password"
-            placeholder="Confirm Password.."
-            name="rePassword"
-            id="rePassword"
-            ngModel
-            #inputRePassword="ngModel"
-            required
-            minlength="5"        
-        />
+                (passGroup?.get('rePassword')?.touched &&
+                (passGroup?.get('rePassword')?.errors?.['required'] ||
+                passGroup?.errors?.['matchPasswordsValidator'])) 
+              ) ? 'input-error' : ''"
+              type="password"
+              name="rePassword"
+              id="rePassword"
+              placeholder="Confirm password.."
+              formControlName="rePassword"            
+            />
 
-        @if(inputRePassword?.touched){
-            <div>
-                @if(inputRePassword?.errors?.['required']){
-                    <p class="error">Confirm Password is required!</p>
+            @if(passGroup?.get('rePassword')?.touched){
+                <div>
+                  @if(passGroup?.errors?.['matchPasswordsValidator'] ||
+                  passGroup?.get('rePassword')?.errors?.['required']){
+                  <p class="error">Repeat Password does not match password!</p>
+                  }
+                </div>
                 }
-                <!--  -->
-                @if(inputRePassword?.errors?.['minlength']){
-                    <p class="error">Confirmed Password must be at least 5 characters!</p>
-                }
-                @if(inputRePassword?.errors?.['appMatchPassword']){
-                    <p class="error">Repeat password does not match password!</p>
-                }
-            </div>
-        }
+        </div>
+        
        
         <input type="submit" [disabled]="form.invalid" [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }" value="Register">
     </form>

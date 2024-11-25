@@ -62,17 +62,17 @@
     border-radius: 10px;
     padding: 15px;
     margin: 10px;
-    background-color: #262322;
+    background-color: #00c3e3;
   }
   
   .btn-container {
     position: absolute;
-    bottom: 50px;
+    /* bottom: 50px; */
     width: 100%;
     text-align: center;
   }
   
-  .sign-up {
+  .like {
     display: inline-block;
     color: white;
     width: 30%;
@@ -80,6 +80,7 @@
     border: 1px solid #FFBCB5;
     border-radius: 10px;
     padding: 15px;
-    background-color: #262322;
+    background-color: #00c3e3;
     align-items: center;
+    cursor: pointer;
   }

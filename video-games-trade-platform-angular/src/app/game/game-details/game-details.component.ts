@@ -33,6 +33,8 @@ export class GameDetailsComponent implements OnInit{
     const id = this.route.snapshot.params['gameId'];
 
     this.apiService.getOne(id).subscribe((result) => {
+      console.log(result);
+      
       this.game = Object.values(result).at(0);
       this.owner = Object.values(result).at(1);
       this.isOwner = Object.values(result).at(2);

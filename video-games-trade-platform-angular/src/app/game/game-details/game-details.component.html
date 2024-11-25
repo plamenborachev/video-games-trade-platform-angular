@@ -20,21 +20,22 @@
             iaculis quis. Nunc orci neque, blandit nec lorem eu, mattis porta erat. Etiam et imperdiet tellus.
             Nulla ac gravida tellus.</p>
     </div>
+
     <div class="btn-container">
-    <!-- @if(isAuthenticated){ --> 
+    @if(isLoggedIn){ 
             <!-- Only for registered user and creator of the game-->
-            <!--@if(isOwner){-->
+            @if(isOwner){
                 <a routerLink="/games/edit/{{game._id}}">Edit</a>
                 <a routerLink="/games/delete/{{game._id}}">Delete</a>
-            <!--} @else {-->
-                <!--@if(liked){-->
+            } @else {
+                @if(liked){
                     <!-- logged in user who has already sign up for the game-->
-                    <p class="sign-up">You've already signed up for this game!</p>
-                <!--} @else {-->
+                    <p class="like">You've already liked this game!</p>
+                } @else {
                     <!-- logged in user who has not yet sign up for the game-->
-                    <a routerLink="/games/like/{{game._id}}">Like</a>
-                <!--}                
-    }-->
-        <!-- } -->    
+                    <a routerLink="/games/like/{{game._id}}">Like</a>        
+                }
+            }
+    }    
     </div>
 </div>
