@@ -1,12 +1,12 @@
-<section id="all-game-page">
-    <article class="all-game-title">
-        <h1>All Games</h1>
-    </article>
+<article class="all-game-title">
+    <h1>All Games</h1>
+</article>
 
+<section id="all-game-page">
     @if(isLoading){
         <app-loader />
     } @else {
-        @if (games) {
+        @if (games && games.length > 0) {
             @for (game of games; track $index) {
                 <article class="all-game-card">
                     <article class="all-game-card-image">
@@ -15,8 +15,9 @@
                 
                     <article class="all-game-card-content">
                         <h2>{{game.title}}</h2>
-                        <h3>Ganre: {{game.ganre}}</h3>
+                        <!-- <h3>Ganre: {{game.ganre}}</h3> -->
                         <h3>Price: €{{game.price}}</h3>
+                        <h3>Added on: {{game.createdAt}}</h3>
                     </article>
                 
                     <article class="all-game-card-buttons">

@@ -25,7 +25,7 @@ export class GameEditComponent {
     const id = this.route.snapshot.params['gameId'];
 
     this.apiService.getOne(id).subscribe((result) => {
-      console.log(result);
+      // console.log(result);
       
       this.game = Object.values(result).at(0);
       // this.owner = Object.values(result).at(1);

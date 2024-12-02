@@ -1,28 +1,30 @@
 .wrapper {
-    min-width: 200px;
-    min-height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #234465;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-  }
-  
-  @keyframes rotation {
-    0% {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e60012; /* Nintendo Switch Red */
+  border-top: 5px solid #ffcc00; /* Nintendo Switch Yellow */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
       transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
   }
-  
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .loader {
+      width: 40px;
+      height: 40px;
+  }
+}

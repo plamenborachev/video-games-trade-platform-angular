@@ -15,7 +15,9 @@ authController.post('/register', isGuest, async (req, res) => {
         const token = await authService.register(username, email, telephone, password, rePassword);
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
         // res.redirect('/');
-        res.json(token);
+        const user = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+        console.log(user);
+        res.json(user);
     } catch(err) {
         // const error = getErrorMessage(err);
         // res.render('auth/register', {title: 'Register Page', username, email, error});
@@ -31,7 +33,9 @@ authController.post('/login', isGuest, async (req, res) => {
         // console.log(token);
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
         // res.redirect('/');
-        res.json(token);
+        const user = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
+        console.log(user);
+        res.json(user);
     } catch(err){
         // const error = getErrorMessage(err);
         // res.render('auth/login', {title: 'Login Page', email, error});

@@ -1,53 +1,76 @@
 .last-game {
-    display: flex;
-    justify-content: space-evenly;
-    margin: 2%;
+  display: flex;
+  justify-content: space-evenly;
+  /* flex-direction: column; */
+  align-items: center;
+  /* background-color: #f4f4f4; */
+  /* padding: 20px; */
+}
+
+.info {
+  background: #fff;
+  border: 2px solid #e60012; /* Nintendo Switch Red */
+  border-radius: 20px;
+  margin: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* margin-bottom: 15px; */
+  width: 30%;
+  max-width: 420px;
+  min-height: 470px;
+  /* text-align: left; */
+  position: relative;
+}
+
+.info .title {
+  font-size: 1.5rem;
+  color: #e60012; /* Highlight title in red */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.info h4 {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.info .learn-more a {
+  color: #00c3e3; /* Nintendo Blue */
+  font-weight: bold;
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  transition: color 0.3s;
+}
+
+.info .learn-more a:hover {
+  color: #007a99; /* Darker Blue */
+}
+
+.not-available-game h1 {
+  font-size: 1.5rem;
+  color: #555;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .info {
+      padding: 15px;
   }
 
-.last-game .info {
-    padding: 30px;
-    width: 20%;
-    background-color: rgb(0, 195, 227, 0.8);
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)); */
-    /* background: rgba(0,0,0,0.9); */
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(../../../../public/images/wallpaper.jpg); */
-    color: black;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    border-radius: 30px;
+  .info .title {
+      font-size: 1.2rem;
   }
-  
-.last-game .title {
-    font-size: 18px;
-    text-align: center;
-    height: 25%;
-    margin-bottom: 10px;
-    border-bottom: 1px solid black;
+
+  .info h4 {
+      font-size: 0.9rem;
   }
-  
-.last-game .genre {
-    text-align: left;
+
+  .info .learn-more a {
+      font-size: 0.9rem;
+      bottom: 5px;
+      right: 5px;
   }
-  
-.last-game .price {
-    font-weight: bold;
-  }
-  
-.last-game .learn-more {
-    background-color: #e70012;
-    border-radius: 10px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 10px;
-  }
-  
-.last-game a {
-    text-decoration: none;
-    font-size: 14px;
-    color: white;
-    font-weight: bold;
-  }
-  
+}

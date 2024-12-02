@@ -27,12 +27,10 @@ const gameSchema = new Schema({
         required: [true, 'Price is required!'],
         min: [0, 'The Price should be a positive number, got \'{VALUE}\'!'],
     }, 
-    likesList: [
-        {
+    likesList: [{
             type: Types.ObjectId,
             ref: 'User'
-        }
-    ],
+    }],    
     owner: {
         type: Types.ObjectId,
         ref: 'User',

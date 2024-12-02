@@ -30,7 +30,17 @@ gamesController.get('/catalog', async (req, res) => {
 });
 
 gamesController.get('/details/:gameId', async (req, res) => {
-    const { game, owner, isOwner, signedUp, signUps } = await checkOwnerAndSignedUp(req, res);
+    // const { game, owner, isOwner, signedUp, signUps } = await checkOwnerAndSignedUp(req, res);
+
+    const gameId = req.params.gameId;
+    let game = null;
+
+    try {
+        game = await gamesService.getOne(gameId).lean();
+    } catch (err){
+        console.log(err);
+        res.status(400).json({ message: getErrorMessage(err) });
+    }
 
     // console.log(device.preferredList);
     // console.log(req.user?._id);
@@ -41,10 +51,10 @@ gamesController.get('/details/:gameId', async (req, res) => {
 
     // const game = await gamesService.getOne(req.params.gameId);
 
-    res.json({game, owner, isOwner, signedUp, signUps});
+    res.json(game);
 });
 
-gamesController.get('/signUp/:gameId', isAuth, async (req, res) => {
+gamesController.get('/like/:gameId', isAuth, async (req, res) => {
     const gameId = req.params.gameId;
     const userId = req.user._id;
     const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
@@ -102,18 +112,19 @@ gamesController.put('/edit/:gameId', isAuth, async (req, res) => {
     }
 });
 
-gamesController.delete('/delete/:gameId', isAuth, async (req, res) => {
+gamesController.delete('/delete/:gameId', isAuth, async (req, res) => {    
     const gameId = req.params.gameId;
-    const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
+    console.log("delete => " + gameId);
+    // const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
 
     // Check if owner
-    if (!isOwner) {
+    // if (!isOwner) {
         // return res.render('game/details',
         //     { game, owner, isOwner: false, signedUp, signUps, error: 'You cannot delete this game!', title: 'Details Page'});
         // res.setError('You cannot delete this volcano!');
         // return res.redirect('/404');
-        return res.status(400).json({ message: 'You cannot delete this game!' });
-    }
+        // return res.status(400).json({ message: 'You cannot delete this game!' });
+    // }
 
     try {
         await gamesService.remove(gameId);

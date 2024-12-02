@@ -1,81 +1,138 @@
-/* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Mulish&display=swap");
-
-*,
-*::before,
-*::after {
+/* General Reset */
+* {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Base font size */
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Mulish";
-  background-color: #e70012;
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../public/images/wallpaper.jpg); */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)), url(../public/images/wallpaper.jpg);
+  font-family: 'Arial', 'Helvetica', sans-serif; /* Clean and readable font */
+  background-color: #f4f4f4;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.0)), url(../public/images/wallpaper.jpg);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
+  color: #333; /* Default text color */
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* .container{ */
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../public/images/wallpaper.jpg); */
-/* } */
-
-.not-available-games {
-  text-align: center;
-  margin: 100px;
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #e60012; /* Nintendo Switch Red */
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
-.errorContainer {
-  position: fixed;
-  right: 100px;
-  min-width: 100px;
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #00c3e3; /* Nintendo Switch Blue */
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #007a99; /* Darker Blue */
+}
+
+/* Buttons */
+button, input[type="submit"], .btn {
+  background-color: #e60012; /* Nintendo Switch Red */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover, input[type="submit"]:hover, .btn:hover {
+  background-color: #ffcc00; /* Nintendo Switch Yellow */
+}
+
+button:disabled, input[type="submit"]:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
   display: block;
-  z-index: 11111;
-  top: 100px;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+}
+
+li {
+  margin: 5px 0;
+}
+
+/* Containers */
+.container {
+  /* width: 90%;
+  max-width: 90%; */
+  margin: 0 auto;
+  padding: 60px 0;
   text-align: center;
-  border-radius: 20px;
-  color: rgb(255, 255, 255);
-  height: auto;
-  width: 320px;
-  box-shadow: 0 5px 10px #ffeae7;
 }
 
-.errorContainer>p {
-  background: black;
-  font-size: 20px;
-  padding: 20px;
-  height: auto;
-  border-radius: 20px;
+/* Footer */
+footer {
+  background-color: #333; /* Dark footer */
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.9rem;
 }
 
-.errorContainer {
-  -moz-animation: cssAnimation 0s ease-in 2s forwards;
-  /* Firefox */
-  -webkit-animation: cssAnimation 0s ease-in 2s forwards;
-  /* Safari and Chrome */
-  -o-animation: cssAnimation 0s ease-in 2s forwards;
-  /* Opera */
-  animation: cssAnimation 0s ease-in 2s forwards;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+footer a {
+  color: #ffcc00; /* Nintendo Yellow */
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* @keyframes cssAnimation {
-  to {
-      width: 0;
-      height: 0;
-      overflow: hidden;
-      padding: 0;
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  html {
+      font-size: 14px; /* Adjust base font size */
+  }
+
+  h1 {
+      font-size: 1.8rem;
+  }
+
+  h2 {
+      font-size: 1.4rem;
+  }
+
+  button, input[type="submit"], .btn {
+      padding: 8px 15px;
+      font-size: 0.9rem;
   }
 }
-
-@-webkit-keyframes cssAnimation {
-  to {
-      width: 0;
-      height: 0;
-      visibility: hidden;
-      padding: 0;
-  }
-} */

@@ -1,35 +1,70 @@
-.not-found-page-container{
-    color: white;
-    background-color: rgb(0, 195, 227, 0.8);
-    width: 90%;
-    margin: auto;
-    border-radius: 30px;
+#not-found-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background-color: #f4f4f4; /* Light Gray */
+    text-align: center;
+    padding: 20px;
 }
 
-.not-found-page-container p a {
-    color: white;
+#not-found-page .not-found-page-container {
+    max-width: 600px;
+    background: #fff;
+    border: 2px solid #e60012; /* Nintendo Switch Red */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+#not-found-page h1 {
+    font-size: 4rem;
+    color: #e60012;
+    margin-bottom: 10px;
+}
+
+#not-found-page h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+#not-found-page p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#not-found-page p a.btn {
+    display: inline-block;
+    background-color: #e60012;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.not-found-page-container p a:hover {
-    text-decoration: underline;
+#not-found-page p a.btn:hover {
+    background-color: #ffcc00; /* Nintendo Switch Yellow */
+    color: #333;
 }
 
-.not-found-page-container h1 {
-    font-size: 100px;
-    margin-top: 10%;
-    text-align: center;
-}
+@media (max-width: 768px) {
+    #not-found-page {
+        padding: 10px;
+    }
 
-.not-found-page-container h2 {
-    font-size: 30px;
-    margin-top: 1%;
-    text-align: center;
-}
+    #not-found-page h1 {
+        font-size: 3rem;
+    }
 
-.not-found-page-container>p {
-    margin-top: 2%;
-    text-align: center;
-    color: white;
+    #not-found-page h2 {
+        font-size: 1.5rem;
+    }
+
+    #not-found-page p {
+        font-size: 0.9rem;
+    }
 }

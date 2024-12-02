@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../../types/game';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router} from '@angular/router';
 import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user.service';
-import { User } from '../../types/user';
+import { formatDate } from '@angular/common';
+import { DATE_TIME_FORMAT, LOCALE } from '../../constants';
 
 @Component({
   selector: 'app-game-details',
@@ -14,15 +15,16 @@ import { User } from '../../types/user';
 })
 export class GameDetailsComponent implements OnInit{
   game = {} as Game;
-  owner = {} as User;
   isOwner: boolean = false;
   liked: boolean = false;
   likedBy = "" as string;
+  addedOnformattedDate: string = "";
 
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
   ) {}
 
   get isLoggedIn(): boolean {
@@ -32,15 +34,29 @@ export class GameDetailsComponent implements OnInit{
   ngOnInit(): void {
     const id = this.route.snapshot.params['gameId'];
 
-    this.apiService.getOne(id).subscribe((result) => {
-      console.log(result);
-      
-      this.game = Object.values(result).at(0);
-      this.owner = Object.values(result).at(1);
-      this.isOwner = Object.values(result).at(2);
-      this.liked = Object.values(result).at(3);
-      this.likedBy = Object.values(result).at(4);      
+    this.apiService.getOne(id).subscribe((game) => {
+      // console.log(Object.values(data).at(0));
+      // this.game = Object.values(data).at(0);
+      this.game = game as Game;
+      console.log(this.game);
+      if (this.game.owner._id === this.userService.user?._id){
+        this.isOwner = true;
+      }
+      // this.owner = Object.values(result).at(1);
+      // this.isOwner = Object.values(result).at(2);
+      // this.liked = Object.values(result).at(3);
+      // this.likedBy = Object.values(result).at(4);
+      this.addedOnformattedDate = formatDate(this.game.createdAt, DATE_TIME_FORMAT, LOCALE);     
     });
   }
 
+  delete(){
+    this.apiService.remove(this.game._id);    
+    this.router.navigate(['/home']);
+  }
+
+  like(){
+    this.apiService.like(this.game._id);    
+    this.router.navigate([`/games/details/${this.game._id}`]);
+  }
 }

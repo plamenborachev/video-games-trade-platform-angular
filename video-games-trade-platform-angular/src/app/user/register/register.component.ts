@@ -70,10 +70,20 @@ export class RegisterComponent {
       return;
     }
 
-    console.log(this.form.value);
+    // console.log(this.form.value);
 
-    // this.userService.register(); //TODO
-    // this.router.navigate(['/home']);
+    const {
+      username,
+      email,
+      telephone,
+      passGroup: { password, rePassword } = {},
+    } = this.form.value;
+
+    this.userService
+      .register(username!, email!, telephone!, password!, rePassword!)
+      .subscribe(() => {
+        this.router.navigate(['/home']);
+      });
     this.form.reset();
   }
 }

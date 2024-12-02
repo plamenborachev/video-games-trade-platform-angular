@@ -1,11 +1,30 @@
 footer {
-    background-color: #00c3e3;
-    text-align: center;
-    font-weight: bold;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    color: white;
+  background-color: #e60012; /* Nintendo Switch Red */
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer a {
+  color: #ffcc00; /* Nintendo Switch Yellow */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #00c3e3;
+}
+
+@media (max-width: 768px) {
+  footer {
+      font-size: 0.8rem;
+      padding: 8px 15px;
   }
+}

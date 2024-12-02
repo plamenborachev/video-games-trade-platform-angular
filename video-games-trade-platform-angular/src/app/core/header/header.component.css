@@ -1,37 +1,69 @@
-.navigation > nav {
-    background-color: #00c3e3;
-    width: 100%;
-    display: flex;
-    font-size: 1.5rem;
-    align-items: center;
-    margin-top: 0;
-    margin: 0%;
-    height: 70px;
-  }
-  
-  .navigation > nav img {
-    width: 4%;
-    padding-left: 1%;
-  }
-  
-  .navigation > nav ul {
-    margin: 0 0 0 auto;
-    padding-right: 5%;
-  }
-  
-  .navigation > nav li {
-    display: inline-block;
-    list-style-type: none;
-    padding-left: 30px;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .navigation > nav li a {
-    text-decoration: none;
-    color: white;
+header {
+  background-color: #e60012; /* Nintendo Switch Red */
+  color: #fff;
+  padding: 0px 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .navigation img {
+  /* height: 50px; */
+  width: 4%;
+  /* padding-left: 0%; */
+}
+
+header .navigation nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+header .navigation nav ul li {
+  position: relative;
+}
+
+header .navigation nav ul li a {
+  text-decoration: none;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+header .navigation nav ul li a:hover {
+  /* color: #ffcc00; Nintendo Switch Yellow */
+  color: #00c3e3;
+}
+
+@media (max-width: 768px) {
+  header .navigation nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: #e60012;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      display: none;
   }
 
-  a {
-    cursor: pointer;
+  header .navigation nav ul.open {
+      display: flex;
   }
+
+  header .navigation {
+      flex-direction: column;
+  }
+}

@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 import bcrypt from 'bcrypt';
 
 const SALT_ROUNDS = 10;

@@ -8,9 +8,9 @@ const getServicesCreatedByUser = (ownerId) => Game.find({owner: ownerId});
 
 const getGamesSignedUpByUser = (userId) => Game.find({ likesList: userId});
 
-const create = (game, ownerId) => Game.create({ ...game, owner: ownerId });
+const create = (game, ownerId) => {Game.create({ ...game, owner: ownerId });}
 
-const getOne = (gameId) => Game.findById(gameId).populate('likesList');
+const getOne = (gameId) => Game.findById(gameId).populate('likesList owner');
 
 const signUp = (gameId, userId) => {
     return Game.findByIdAndUpdate(gameId, { $push: { likesList: userId } });

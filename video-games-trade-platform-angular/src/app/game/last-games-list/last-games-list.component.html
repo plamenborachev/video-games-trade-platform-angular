@@ -2,9 +2,10 @@
     @if(isLoading){
         <app-loader />
     } @else {
-        @if (games) {
+        @if (games && games.length > 0) {
             @for (game of games; track $index) {
                 <div class="info">
+                    <img src="{{game.image}}" alt="{{game.title}}">
                     <h2 class="title">{{game.title}}</h2>                
                     <h4 class="seller">Seller: {{game.owner.username}}</h4>
                     <h4 class="price">Price: €{{game.price}}</h4>

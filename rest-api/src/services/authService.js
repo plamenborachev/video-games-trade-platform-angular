@@ -16,6 +16,7 @@ const register = async (username, email, telephone, password, rePassword) => {
     }
 
     const newUser = await User.create({ username, email, telephone, password });
+    // console.log(newUser);
 
     return generateToken(newUser);
 }
@@ -40,14 +41,12 @@ const generateToken = async(user) => {
     const payload = {
         _id: user._id,
         email: user.email,
-        name: user.username,
+        username: user.username,
         telephone: user.telephone,
     };
 
     const header = { expiresIn: '2h' };
-
     const token = await jwt.sign(payload, JWT_SECRET, header);
-
     return token;
 }
 

@@ -1,82 +1,100 @@
 #create-container {
-    color: black;
-    width: 360px;
-    height: auto;
-    margin: auto;
-    margin-top: 2%;
-    margin-bottom: 3%;
-    /* background-color: #ffeae7c6; */
-    background-color: rgb(0, 195, 227, 0.8);
-    border: 1px solid black;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-#create-container h1 {
-    text-align: center;
-    padding-top: 15px;
-    color: black;
-}
-
-#create-container form {
-    width: 300px;
-    margin-left: 20px;
-}
-
-#create-container form label {
     display: flex;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #f4f4f4; /* Light Gray */
+    padding: 20px;
 }
 
-#create-container form input {
-    width: 320px;
-    height: 30px;
-    padding-left: 7px;
-    border: none;
-    border: 1px solid gray;
-    border-radius: 8px;
-    outline: none;
-    background-color: whitesmoke;
+.create-container-info {
+    background: #fff;
+    border: 2px solid #e60012; /* Nintendo Switch Red */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
 }
 
-#create-container input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.create-container-info h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #e60012;
+    margin-bottom: 20px;
 }
 
-#create-container form textarea {
-    width: 320px;
-    height: 100px;
-    padding-left: 7px;
-    border: none;
-    border: 1px solid gray;
-    border-radius: 8px;
-    outline: none;
-    background-color: whitesmoke;
-    resize: none;
+.create-container-info form {
+    display: flex;
+    flex-direction: column;
 }
 
-#create-container input[type="submit"] {
-    width: 320px;
-    height: 35px;
-    margin-top: 20px;
-    border: none;
-    background-color: black;
-    color: white;
-    font-size: 15px;
-    margin-bottom: 30px;
-    cursor: pointer;
-}
-
-.input-error {
-    border-left-color: red !important;
-    border-color: red !important;
-    border-width: 5px !important;
-  }
-
-  .error{
-    color: red;
+.create-container-info label {
     font-weight: bold;
-  }
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.create-container-info input,
+.create-container-info textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.create-container-info input:focus,
+.create-container-info textarea:focus {
+    border-color: #e60012;
+    outline: none;
+}
+
+.create-container-info input.input-error,
+.create-container-info textarea.input-error {
+    border-color: #ff0000; /* Error Red */
+}
+
+.create-container-info .error {
+    color: #ff0000;
+    font-size: 0.9rem;
+    margin: -10px 0 10px 0;
+}
+
+.create-container-info input[type="submit"] {
+    background-color: #00c3e3; /* Nintendo Blue */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-container-info input[type="submit"]:hover {
+    background-color: #007a99;
+}
+
+.create-container-info input[type="submit"]:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .create-container-info {
+        padding: 20px;
+    }
+
+    .create-container-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .create-container-info input,
+    .create-container-info textarea {
+        font-size: 0.9rem;
+    }
+}

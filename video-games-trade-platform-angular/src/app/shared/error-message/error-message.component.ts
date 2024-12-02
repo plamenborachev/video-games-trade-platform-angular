@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
+import { ErrorMsgService } from './error-message.service';
 
 @Component({
   selector: 'app-error-message',
@@ -7,6 +8,15 @@ import { Component, Input } from '@angular/core';
   templateUrl: './error-message.component.html',
   styleUrl: './error-message.component.css'
 })
-export class ErrorMessageComponent {
-  @Input('errorMessage') errorMessage: string = "";
+export class ErrorMessageComponent implements OnInit{
+  // @Input() errorMessage: string = "";
+
+  errorMsg = signal('');
+  constructor(private errorMsgService: ErrorMsgService) {}
+
+  ngOnInit(): void {
+    this.errorMsgService.apiError$.subscribe((err: any) => {
+      this.errorMsg.set(err?.message);
+    });
+  }
 }

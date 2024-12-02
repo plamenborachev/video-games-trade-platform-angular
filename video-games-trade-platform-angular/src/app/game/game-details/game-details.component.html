@@ -3,12 +3,13 @@
         <img src={{game.image}}>
     </div>
     <div class="details-container-info">
-        <h2>Title: {{game.title}}</h2>
+        <h2>{{game.title}}</h2>
         <h3>Ganre: {{game.ganre}}</h3>
         <h3>Price: €{{game.price}}</h3>
-        <h3>By: {{owner.username}}</h3>
-        <h3>Email: {{owner.email}}</h3>
-        <h3>Tel: {{owner.telephone}}</h3>
+        <h3>By: {{game.owner.username}}</h3>
+        <h3>Email: {{game.owner.email}}</h3>
+        <h3>Tel: {{game.owner.telephone}}</h3>
+        <h3>Added on: {{addedOnformattedDate}}</h3>
         @if(likedBy){
             <h4>Liked By: {{likedBy}}</h4>
         } @else {
@@ -16,11 +17,7 @@
         }        
     </div>
     <div class="details-container-content">
-        <p>Curabitur fringilla nec urna sit amet eleifend. Suspendisse sodales vitae tellus sit amet dictum.
-            Vivamus condimentum blandit interdum. Donec ac placerat enim. Pellentesque elementum condimentum
-            massa, id condimentum lorem maximus sit amet. Vivamus accumsan imperdiet urna, eget malesuada felis
-            iaculis quis. Nunc orci neque, blandit nec lorem eu, mattis porta erat. Etiam et imperdiet tellus.
-            Nulla ac gravida tellus.</p>
+        <p>{{game.description}}</p>
     </div>
 
     <div class="btn-container">
@@ -28,14 +25,14 @@
             <!-- Only for registered user and creator of the game-->
             @if(isOwner){
                 <a routerLink="/games/edit/{{game._id}}">Edit</a>
-                <a routerLink="/games/delete/{{game._id}}">Delete</a>
+                <a (click)="delete()">Delete</a>
             } @else {
                 @if(liked){
                     <!-- logged in user who has already sign up for the game-->
                     <p class="like">You've already liked this game!</p>
                 } @else {
                     <!-- logged in user who has not yet sign up for the game-->
-                    <a routerLink="/games/like/{{game._id}}">Like</a>        
+                    <a (click)="like()">Like</a>
                 }
             }
     }    

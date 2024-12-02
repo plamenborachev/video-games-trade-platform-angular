@@ -1,6 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { environment } from "../environments/environment.development";
 import { Game } from "./types/game";
 
 @Injectable({
@@ -10,32 +9,38 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     getLastThreeGames(){
-        const { apiUrl } = environment; //TODO extract variable
-        let url = `${apiUrl}/`;
+        let url = '/api/';
         return this.http.get<Game[]>(url);
     }
 
     getAll(){
-        const { apiUrl } = environment;
-        let url = `${apiUrl}/games/catalog`;
+        let url = '/api/games/catalog';
         return this.http.get<Game[]>(url);
     }    
 
     getOne(id: string){
-        const { apiUrl } = environment;
-        let url = `${apiUrl}/games/details/${id}`;
-        return this.http.get(url);
+        let url = `/api/games/details/${id}`;
+        return this.http.get<Game>(url);
     }
 
     getProfile(){
-        const { apiUrl } = environment;
-        let url = `${apiUrl}/profile`;
+        let url = '/api/profile';
         return this.http.get(url);
     }
 
     remove(id: string){
-        const { apiUrl } = environment;
-        let url = `${apiUrl}/games/delete/${id}`;
+        let url = `/api/games/delete/${id}`;
         return this.http.delete(url);
+    }
+
+    like(id: string){
+        let url = `/api/games/like/${id}`;
+        return this.http.get(url);
+    }
+
+    createGame(title: string, ganre: string, image: string, description: string, price: number){
+        let url = '/api/games/create';
+        const payload = { title, ganre, image, description, price };
+        return this.http.post<Game>(url, payload);
     }
 }

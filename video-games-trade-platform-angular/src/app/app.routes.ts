@@ -9,6 +9,7 @@ import { ProfileComponent } from './user/profile/profile.component';
 import { CatalogComponent } from './game/catalog/catalog.component';
 import { GameCreateComponent } from './game/game-create/game-create.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -24,12 +25,11 @@ export const routes: Routes = [
         children: [
             { path: 'details/:gameId', component: GameDetailsComponent },
             { path: 'create', component: GameCreateComponent, canActivate: [AuthGuard],},
-            { path: 'edit/:gameId', component: GameEditComponent, canActivate: [AuthGuard],},
-            // { path: 'delete/:gameId', component: GameDeleteComponent, canActivate: [AuthGuard],}, //TODO
-            
+            { path: 'edit/:gameId', component: GameEditComponent, canActivate: [AuthGuard],},            
         ]
     },
 
+    { path: 'error', component: ErrorMessageComponent },
     { path: '404', component: ErrorComponent },
     { path: '**', redirectTo: '/404' },
 ];

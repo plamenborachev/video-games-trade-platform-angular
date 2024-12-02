@@ -16,12 +16,14 @@ export class HeaderComponent {
     return this.userService.isLogged;
   }
 
-  get firstName(): string {
+  get username(): string {
+    // console.log(this.userService.user);
     return this.userService.user?.username || '';
   }
 
   logout() {
-    this.userService.logout();
-    this.router.navigate(['/home']);
+    this.userService.logout().subscribe(() => {
+      this.router.navigate(['/login']);
+    });
   }
 }
