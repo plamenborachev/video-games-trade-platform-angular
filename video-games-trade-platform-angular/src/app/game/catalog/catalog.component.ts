@@ -24,7 +24,7 @@ export class CatalogComponent implements OnInit{
       // console.log(games);
 
       this.games = games;
-      this.games.forEach((game) => game.createdAt = formatDate(game.createdAt, DATE_TIME_FORMAT, LOCALE));
+      // this.games.forEach((game) => game.createdAt = formatDate(game.createdAt, DATE_TIME_FORMAT, LOCALE));
       this.isLoading = false;
     });
   }

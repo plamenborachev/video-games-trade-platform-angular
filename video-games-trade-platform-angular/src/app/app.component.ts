@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from "./core/header/header.component";
-import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @Component({

@@ -57,26 +57,26 @@ gamesController.get('/details/:gameId', async (req, res) => {
 gamesController.get('/like/:gameId', isAuth, async (req, res) => {
     const gameId = req.params.gameId;
     const userId = req.user._id;
-    const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
+    // const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
 
     // console.log(device.preferredList);
     // console.log(req.user?._id);
     // console.log(isOwner);
     // console.log(preferred);
 
-    if (isOwner){
+    // if (isOwner){
         // return res.render('game/details',
         //     { error: `You are owner of ${game.title} and can not sign up for it!`, game, owner, isOwner, signedUp, signUps, title: 'Details Page'});
         // res.setError('You cannot vote for this volcano!');
         // return res.redirect('/404');
-        return res.status(400).json({ message: 'You cannot like this game!' });
-    }   
+    //     return res.status(400).json({ message: 'You cannot like this game!' });
+    // }   
 
-    if (signedUp){
+    // if (signedUp){
         // return res.already signed render('game/details',
         //     { error: 'You\'ve up for this game!', game, owner, isOwner, signedUp, signUps, title: 'Details Page'});
-        return res.status(400).json({ message: 'You have already liked this game!' });
-    }
+    //     return res.status(400).json({ message: 'You have already liked this game!' });
+    // }
 
     try {        
         const signUpGame = await gamesService.signUp(gameId, userId);

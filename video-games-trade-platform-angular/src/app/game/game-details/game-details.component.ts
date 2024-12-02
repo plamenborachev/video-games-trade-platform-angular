@@ -16,7 +16,7 @@ import { DATE_TIME_FORMAT, LOCALE } from '../../constants';
 export class GameDetailsComponent implements OnInit{
   game = {} as Game;
   isOwner: boolean = false;
-  liked: boolean = false;
+  isLiked: boolean = false;
   likedBy = "" as string;
   addedOnformattedDate: string = "";
 
@@ -38,25 +38,30 @@ export class GameDetailsComponent implements OnInit{
       // console.log(Object.values(data).at(0));
       // this.game = Object.values(data).at(0);
       this.game = game as Game;
-      console.log(this.game);
+      // console.log(this.game);
       if (this.game.owner._id === this.userService.user?._id){
         this.isOwner = true;
       }
+      this.isLiked = this.game.likesList.some(like => like._id.toString() === this.userService.user?._id);
+      this.likedBy = this.game.likesList.map(liked => liked.email).join(', ');
       // this.owner = Object.values(result).at(1);
       // this.isOwner = Object.values(result).at(2);
       // this.liked = Object.values(result).at(3);
       // this.likedBy = Object.values(result).at(4);
-      this.addedOnformattedDate = formatDate(this.game.createdAt, DATE_TIME_FORMAT, LOCALE);     
+      // this.addedOnformattedDate = formatDate(this.game.createdAt, DATE_TIME_FORMAT, LOCALE);     
     });
   }
 
   delete(){
-    this.apiService.remove(this.game._id);    
-    this.router.navigate(['/home']);
+    this.apiService.remove(this.game._id).subscribe(() => {
+      this.router.navigate(['/home']);
+    });    
   }
 
   like(){
-    this.apiService.like(this.game._id);    
-    this.router.navigate([`/games/details/${this.game._id}`]);
+    this.apiService.like(this.game._id).subscribe(() => {
+      this.router.navigate(['/home']);
+      // this.router.navigate([`/games/details/${this.game._id}`]);
+    }); 
   }
 }

@@ -9,7 +9,7 @@
         <h3>By: {{game.owner.username}}</h3>
         <h3>Email: {{game.owner.email}}</h3>
         <h3>Tel: {{game.owner.telephone}}</h3>
-        <h3>Added on: {{addedOnformattedDate}}</h3>
+        <h3>Added on: {{game.createdAt}}</h3>
         @if(likedBy){
             <h4>Liked By: {{likedBy}}</h4>
         } @else {
@@ -27,7 +27,7 @@
                 <a routerLink="/games/edit/{{game._id}}">Edit</a>
                 <a (click)="delete()">Delete</a>
             } @else {
-                @if(liked){
+                @if(isLiked){
                     <!-- logged in user who has already sign up for the game-->
                     <p class="like">You've already liked this game!</p>
                 } @else {

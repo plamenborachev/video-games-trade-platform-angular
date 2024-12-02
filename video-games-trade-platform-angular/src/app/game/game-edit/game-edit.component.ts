@@ -24,10 +24,10 @@ export class GameEditComponent {
   ngOnInit(): void {
     const id = this.route.snapshot.params['gameId'];
 
-    this.apiService.getOne(id).subscribe((result) => {
+    this.apiService.getOne(id).subscribe((game) => {
       // console.log(result);
       
-      this.game = Object.values(result).at(0);
+      this.game = game;
       // this.owner = Object.values(result).at(1);
       // this.isOwner = Object.values(result).at(2);
       // this.liked = Object.values(result).at(3);
