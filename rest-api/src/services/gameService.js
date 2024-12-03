@@ -1,12 +1,12 @@
 import Game from '../models/Game.js'
 
-const getAll = () => Game.find();
+const getAll = () => Game.find().populate('likesList owner');
 
-const getTopThree = () => Game.find().populate('owner').sort({createdAt: -1}).limit(3);
+const getTopThree = () => Game.find().populate('likesList owner').sort({createdAt: -1}).limit(3);
 
-const getServicesCreatedByUser = (ownerId) => Game.find({owner: ownerId});
+const getServicesCreatedByUser = (ownerId) => Game.find({ owner: ownerId });
 
-const getGamesSignedUpByUser = (userId) => Game.find({ likesList: userId});
+const getGamesSignedUpByUser = (userId) => Game.find({ likesList: userId });
 
 const create = (game, ownerId) => {Game.create({ ...game, owner: ownerId });}
 

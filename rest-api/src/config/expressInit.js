@@ -11,6 +11,8 @@ export default function expressInit(app) {
 
     app.use(corsMiddleware);
 
+    // app.use(cors());
+    
     // const corsOrigin ={
     //     origin:'http://localhost:4200/', //or whatever port your frontend is using
     //     credentials:true,            
@@ -18,20 +20,18 @@ export default function expressInit(app) {
     // }
     // app.use(cors(corsOrigin));
 
-    var whitelist = ['http://localhost:4200', /** other domains if any */ ]
-    var corsOptions = {
-        credentials: true,
-        origin: function(origin, callback) {
-            if (whitelist.indexOf(origin) !== -1) {
-                callback(null, true)
-            } else {
-                callback(new Error('Not allowed by CORS'))
-            }
-        }
-    }
-    app.use(cors(corsOptions));
-
-    // app.use(cors());
+    // var whitelist = ['http://localhost:4200', /** other domains if any */ ]
+    // var corsOptions = {
+    //     credentials: true,
+    //     origin: function(origin, callback) {
+    //         if (whitelist.indexOf(origin) !== -1) {
+    //             callback(null, true)
+    //         } else {
+    //             callback(new Error('Not allowed by CORS'))
+    //         }
+    //     }
+    // }
+    // app.use(cors(corsOptions));
 
     app.use(cookieParser());
     app.use(authMiddleware);

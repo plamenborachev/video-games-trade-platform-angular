@@ -13,18 +13,24 @@ import { ErrorMessageComponent } from './shared/error-message/error-message.comp
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
-    { path: 'catalog', component: CatalogComponent },
+    { path: 'home',
+        loadComponent: () => import('./home/home.component').then((c) => c.HomeComponent),
+    },
+    { path: 'catalog',
+        loadComponent: () => import('./game/catalog/catalog.component').then((c) => c.CatalogComponent),
+    },
 
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'profile', component: ProfileComponent },
 
-    {
-        path: 'games',
+    { path: 'games',
         children: [
             { path: 'details/:gameId', component: GameDetailsComponent },
-            { path: 'create', component: GameCreateComponent, canActivate: [AuthGuard],},
+            { path: 'create',
+                canActivate: [AuthGuard],
+                loadComponent: () => import('./game/game-create/game-create.component').then((c) => c.GameCreateComponent),
+            },
             { path: 'edit/:gameId', component: GameEditComponent, canActivate: [AuthGuard],},            
         ]
     },

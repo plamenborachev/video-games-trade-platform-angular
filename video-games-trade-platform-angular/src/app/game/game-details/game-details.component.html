@@ -9,8 +9,8 @@
         <h3>By: {{game.owner.username}}</h3>
         <h3>Email: {{game.owner.email}}</h3>
         <h3>Tel: {{game.owner.telephone}}</h3>
-        <h3>Added on: {{game.createdAt}}</h3>
-        @if(likedBy){
+        <h3>Added on: {{game.createdAt | date: 'dd-MM-yyyy HH:mm'}}</h3>
+        @if(game.likesList.length > 0){
             <h4>Liked By: {{likedBy}}</h4>
         } @else {
             <h4>Nobody liked this game yet!</h4>

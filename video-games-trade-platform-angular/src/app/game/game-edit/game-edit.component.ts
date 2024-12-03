@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Game } from '../../types/game';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user.service';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -18,7 +18,7 @@ export class GameEditComponent {
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    private userService: UserService
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -42,10 +42,12 @@ export class GameEditComponent {
       console.error('Invalid edit game form');
       return;
     }
-
     console.log(form.value);
 
-    //TODO
-  }
+    const {title, ganre, image, description, price } = form.value;
 
+    this.apiService.edit(this.game._id, title, ganre, image, description, price).subscribe(() => {
+        this.router.navigate(['/catalog']);
+    })
+  }
 }

@@ -16,7 +16,7 @@ authController.post('/register', isGuest, async (req, res) => {
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
         // res.redirect('/');
         const user = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
-        console.log(user);
+        // console.log(user);
         res.json(user);
     } catch(err) {
         // const error = getErrorMessage(err);
@@ -34,7 +34,7 @@ authController.post('/login', isGuest, async (req, res) => {
         res.cookie(AUTH_COOKIE_NAME, token, { httpOnly: true });
         // res.redirect('/');
         const user = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
-        console.log(user);
+        // console.log(user);
         res.json(user);
     } catch(err){
         // const error = getErrorMessage(err);

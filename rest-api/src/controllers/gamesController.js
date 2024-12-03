@@ -91,15 +91,15 @@ gamesController.put('/edit/:gameId', isAuth, async (req, res) => {
     const gameData = req.body;
     const gameId = req.params.gameId;
 
-    const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
+    // const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
 
-    if (!isOwner) {
+    // if (!isOwner) {
         // return res.render('device/details',
         //     { game, isOwner: false, signedUp, signUps, error: 'You cannot edit this game!', title: 'Details Page'});
         // res.setError('You cannot delete this movie!');
         // return res.redirect('/404');
-        return res.status(400).json({ message: 'You cannot edit this game!' });
-    }  
+    //     return res.status(400).json({ message: 'You cannot edit this game!' });
+    // }  
 
     try {
         const updatedGame = await gamesService.edit(gameId, gameData);
@@ -114,7 +114,7 @@ gamesController.put('/edit/:gameId', isAuth, async (req, res) => {
 
 gamesController.delete('/delete/:gameId', isAuth, async (req, res) => {    
     const gameId = req.params.gameId;
-    console.log("delete => " + gameId);
+    // console.log("delete => " + gameId);
     // const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);
 
     // Check if owner

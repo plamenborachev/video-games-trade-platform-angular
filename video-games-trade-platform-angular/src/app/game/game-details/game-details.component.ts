@@ -3,22 +3,22 @@ import { Game } from '../../types/game';
 import { ActivatedRoute, RouterLink, Router} from '@angular/router';
 import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user.service';
-import { formatDate } from '@angular/common';
-import { DATE_TIME_FORMAT, LOCALE } from '../../constants';
+import { User } from '../../types/user';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-game-details',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './game-details.component.html',
   styleUrl: './game-details.component.css'
 })
 export class GameDetailsComponent implements OnInit{
   game = {} as Game;
+  user = {} as User;
   isOwner: boolean = false;
   isLiked: boolean = false;
   likedBy = "" as string;
-  addedOnformattedDate: string = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -34,21 +34,17 @@ export class GameDetailsComponent implements OnInit{
   ngOnInit(): void {
     const id = this.route.snapshot.params['gameId'];
 
+    this.user = this.userService.user as User;
+
     this.apiService.getOne(id).subscribe((game) => {
-      // console.log(Object.values(data).at(0));
-      // this.game = Object.values(data).at(0);
-      this.game = game as Game;
+      this.game = game;
       // console.log(this.game);
-      if (this.game.owner._id === this.userService.user?._id){
+      if (this.game.owner._id === this.user._id){
         this.isOwner = true;
       }
       this.isLiked = this.game.likesList.some(like => like._id.toString() === this.userService.user?._id);
-      this.likedBy = this.game.likesList.map(liked => liked.email).join(', ');
-      // this.owner = Object.values(result).at(1);
-      // this.isOwner = Object.values(result).at(2);
-      // this.liked = Object.values(result).at(3);
-      // this.likedBy = Object.values(result).at(4);
-      // this.addedOnformattedDate = formatDate(this.game.createdAt, DATE_TIME_FORMAT, LOCALE);     
+      // console.log(this.game.likesList);
+      this.likedBy = this.game.likesList.map(liked => liked.email).join(', '); //FIXME
     });
   }
 

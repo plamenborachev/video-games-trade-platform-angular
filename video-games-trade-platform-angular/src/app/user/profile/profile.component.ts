@@ -40,5 +40,12 @@ export class ProfileComponent {
         },
         complete: () => console.info('complete')
     });
+
+    this.apiService.getAll().subscribe((games) => { 
+      console.log(games);
+      this.gamesCreated = games.filter((game) => game.owner._id === this.user?._id);
+      this.gamesLiked = games.filter((game) => game.likesList.some((like) => like._id === this.user?._id));
+      // console.log();
+    });
   }
 }

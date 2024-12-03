@@ -5,11 +5,12 @@ import { Game } from '../../types/game';
 import { ApiService } from '../../api.service';
 import { formatDate } from '@angular/common';
 import { DATE_TIME_FORMAT, LOCALE } from '../../constants';
+import { ElapsedTimePipe } from "../../shared/pipes/elapsed-time.pipe";
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [RouterLink, LoaderComponent],
+  imports: [RouterLink, LoaderComponent, ElapsedTimePipe],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
