@@ -19,6 +19,7 @@
                         <h3>Price: €{{game.price}}</h3>
                         <h3>Added: {{game.createdAt | elapsedTime}}</h3>
                         <h3>Likes: {{game.likesList.length}}</h3>
+                        <h3>Description: {{game.description | slice: 50}}</h3>
                     </article>
                 
                     <article class="all-game-card-buttons">

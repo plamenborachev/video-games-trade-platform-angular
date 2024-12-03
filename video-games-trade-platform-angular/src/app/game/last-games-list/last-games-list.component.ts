@@ -6,11 +6,12 @@ import { LoaderComponent } from '../../shared/loader/loader.component';
 import { formatDate } from '@angular/common';
 import { DATE_TIME_FORMAT, LOCALE } from '../../constants';
 import { ElapsedTimePipe } from "../../shared/pipes/elapsed-time.pipe";
+import { SlicePipe } from "../../shared/pipes/slice.pipe";
 
 @Component({
   selector: 'app-last-games-list',
   standalone: true,
-  imports: [RouterLink, LoaderComponent, ElapsedTimePipe],
+  imports: [RouterLink, LoaderComponent, ElapsedTimePipe, SlicePipe],
   templateUrl: './last-games-list.component.html',
   styleUrl: './last-games-list.component.css'
 })

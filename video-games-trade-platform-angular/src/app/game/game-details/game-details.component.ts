@@ -5,11 +5,13 @@ import { ApiService } from '../../api.service';
 import { UserService } from '../../user/user.service';
 import { User } from '../../types/user';
 import { DatePipe } from '@angular/common';
+import { Title } from '@angular/platform-browser';
+import { SlicePipe } from "../../shared/pipes/slice.pipe";
 
 @Component({
   selector: 'app-game-details',
   standalone: true,
-  imports: [RouterLink, DatePipe],
+  imports: [RouterLink, DatePipe, SlicePipe],
   templateUrl: './game-details.component.html',
   styleUrl: './game-details.component.css'
 })
@@ -25,7 +27,10 @@ export class GameDetailsComponent implements OnInit{
     private apiService: ApiService,
     private userService: UserService,
     private router: Router,
-  ) {}
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("Game Details");
+  }
 
   get isLoggedIn(): boolean {
     return this.userService.isLogged;

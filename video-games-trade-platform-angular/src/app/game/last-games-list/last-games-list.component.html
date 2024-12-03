@@ -11,6 +11,7 @@
                     <h4 class="price">Price: €{{game.price}}</h4>
                     <h4 class="added-on">Added: {{game.createdAt | elapsedTime}}</h4>
                     <h4 class="likes">Likes: {{game.likesList.length}}</h4>
+                    <h4 class="likes">Description: {{game.description | slice: 50}}</h4>
                     <div class="learn-more">
                         <a [routerLink]="['/games/details', game._id]">Details...</a>
                     </div>

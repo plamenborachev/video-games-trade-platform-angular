@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,10 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  constructor(private userService: UserService, private router: Router) {}
+
+  constructor(private userService: UserService, private router: Router, private titleService: Title) {
+    this.titleService.setTitle("Login");
+  }
 
   login(form: NgForm) {
     // console.log(form);

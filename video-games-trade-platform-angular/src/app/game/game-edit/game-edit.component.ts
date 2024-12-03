@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Game } from '../../types/game';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../api.service';
-import { UserService } from '../../user/user.service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-game-edit',
@@ -19,7 +19,10 @@ export class GameEditComponent {
     private route: ActivatedRoute,
     private apiService: ApiService,
     private router: Router,
-  ) {}
+    private titleService: Title
+  ) {
+    this.titleService.setTitle("Edit Game");
+  }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['gameId'];

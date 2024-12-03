@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../user/user.service';
 import { TitleCasePipe } from '@angular/common';
+import { ErrorMessageComponent } from "../../shared/error-message/error-message.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, TitleCasePipe],
+  imports: [RouterLink, TitleCasePipe, ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

@@ -4,6 +4,7 @@ import { ApiService } from '../../api.service';
 import { User } from '../../types/user';
 import { LoaderComponent } from '../../shared/loader/loader.component';
 import { RouterLink } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -19,7 +20,9 @@ export class ProfileComponent {
   gamesLiked: Game[] = [];
   errorMessage: string = "";
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private titleService: Title) {
+    this.titleService.setTitle("Profile");
+  }  
 
   ngOnInit(): void {    
       this.apiService.getProfile()

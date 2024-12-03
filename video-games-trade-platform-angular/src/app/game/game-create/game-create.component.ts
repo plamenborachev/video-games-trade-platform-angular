@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-game-create',
@@ -11,7 +12,10 @@ import { Router } from '@angular/router';
   styleUrl: './game-create.component.css'
 })
 export class GameCreateComponent {
-  constructor(private apiService: ApiService, private router: Router) {}
+  
+  constructor(private apiService: ApiService, private router: Router, private titleService: Title) {
+    this.titleService.setTitle("Create Game");
+  }
 
   addGame(form: NgForm) {
     // console.log(form);

@@ -8,6 +8,7 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
 import { UserService } from '../user.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,10 @@ import { UserService } from '../user.service';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  constructor(private userService: UserService, private router: Router) {}
+
+  constructor(private userService: UserService, private router: Router, private titleService: Title) {
+    this.titleService.setTitle("Register");
+  }
 
   form = new FormGroup({
     username: new FormControl('', [
