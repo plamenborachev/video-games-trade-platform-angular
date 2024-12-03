@@ -20,7 +20,7 @@ export class GameDetailsComponent implements OnInit{
   user = {} as User;
   isOwner: boolean = false;
   isLiked: boolean = false;
-  likedBy = "" as string;
+  likedBy: string = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -43,14 +43,14 @@ export class GameDetailsComponent implements OnInit{
 
     this.apiService.getOne(id).subscribe((game) => {
       this.game = game;
-      // console.log(this.game);
+      console.log(this.game);
+      console.log(this.game.likesList);
+      this.likedBy = this.game.likesList.map(liked => liked.email).join(', ');
+
       if (this.game.owner._id === this.user._id){
         this.isOwner = true;
       }
-      this.isLiked = this.game.likesList.some(like => like._id.toString() === this.userService.user?._id);
-      // console.log(this.game.likesList);
-      this.likedBy = this.game.likesList.map(liked => liked.email).join(', '); //FIXME
-    });
+      this.isLiked = this.game.likesList.some(like => like._id.toString() === this.userService.user?._id);          });
   }
 
   delete(){

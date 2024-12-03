@@ -21,7 +21,7 @@ authController.post('/register', isGuest, async (req, res) => {
     } catch(err) {
         // const error = getErrorMessage(err);
         // res.render('auth/register', {title: 'Register Page', username, email, error});
-        res.status(400).json({ message: getErrorMessage(err) })
+        res.status(401).json({ message: getErrorMessage(err) })
     }
 });
 
@@ -39,7 +39,7 @@ authController.post('/login', isGuest, async (req, res) => {
     } catch(err){
         // const error = getErrorMessage(err);
         // res.render('auth/login', {title: 'Login Page', email, error});
-        res.status(400).json({ message: getErrorMessage(err) });
+        res.status(401).json({ message: getErrorMessage(err) });
     }    
 });
 

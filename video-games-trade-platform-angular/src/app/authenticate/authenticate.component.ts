@@ -11,9 +11,10 @@ import { LoaderComponent } from '../shared/loader/loader.component';
 })
 export class AuthenticateComponent implements OnInit {
   isAuthenticating = true;
+  // isLoggedIn: boolean = false;
 
   constructor(private userService: UserService) {}
-
+  
   ngOnInit(): void {
     this.userService.getProfile().subscribe({
       next: () => {
