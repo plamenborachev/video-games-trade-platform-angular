@@ -1,9 +1,10 @@
 #all-game-page {
-  padding: 20px;
-  background-color: #f4f4f4; /* Light Gray */
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #f4f4f4; /* Light Gray */  
 }
 
 .all-game-title h1 {
@@ -14,16 +15,20 @@
 }
 
 .all-game-card {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+   /* flex-direction: column; */
+  flex: 45%; 
   background: #fff;
   border: 2px solid #e60012;
   border-radius: 20px;
-  margin: 15px 0;
+  margin: 20px auto 50px auto;
+  /* margin-left: auto;
+  margin-right: auto; */
+  /* margin: 15px 0; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 90%;
-  max-width: 500px;
+  /* width: 90%; */
+  max-width: 30%;
   transition: transform 0.3s;
 }
 

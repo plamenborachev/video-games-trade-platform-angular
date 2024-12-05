@@ -7,12 +7,18 @@ import { ErrorMessageComponent } from "../../shared/error-message/error-message.
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, TitleCasePipe, ],
+  imports: [RouterLink, TitleCasePipe, ErrorMessageComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  menuOpen: boolean = false;  
+
   constructor(private userService: UserService, private router: Router){}
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+}
 
   get isLoggedIn(): boolean {
     return this.userService.isLogged;

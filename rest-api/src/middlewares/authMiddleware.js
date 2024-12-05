@@ -41,7 +41,7 @@ export const isAuth = (req, res, next) => {
     if (!req.user) {
     // if (!req.isAuthenticated) {
         // return res.redirect('/auth/login');
-        return res.status(400).json({ message: 'Please login' });
+        return res.status(401).json({ message: 'Please login' });
     }
     
     next();

@@ -9,7 +9,7 @@ homeController.get('/', async (req, res) => {
     //Visualize the last 3 added post
     const getTopThreeGames = await gamesService.getTopThree().lean();
     // res.render('home', { getTopThreeGames, title: 'Home Page'});
-    res.json(getTopThreeGames);
+    res.status(200).json(getTopThreeGames);
 });
 
 homeController.get('/profile', isAuth, async (req, res) => {
@@ -19,7 +19,7 @@ homeController.get('/profile', isAuth, async (req, res) => {
     const user = await userService.owner(userId).lean();
     //console.log(devicesCreated);
     // res.render('home/profile', {gamesCreated, gamesSignedUp, title: 'Profile Page'});
-    res.json(user);
+    res.status(200).json(user);
 });
 
 // homeController.get('/about', (req, res) => {

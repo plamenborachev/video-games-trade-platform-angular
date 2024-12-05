@@ -12,12 +12,27 @@ header .navigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 header .navigation img {
-  /* height: 50px; */
-  width: 4%;
-  /* padding-left: 0%; */
+  width: 10%;
+}
+
+header .hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+header .hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #fff;
 }
 
 header .navigation nav ul {
@@ -28,8 +43,16 @@ header .navigation nav ul {
   padding: 0;
 }
 
-header .navigation nav ul li {
-  position: relative;
+header .navigation nav ul.open {
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #e60012;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  display: flex;
 }
 
 header .navigation nav ul li a {
@@ -42,20 +65,16 @@ header .navigation nav ul li a {
 }
 
 header .navigation nav ul li a:hover {
-  /* color: #ffcc00; Nintendo Switch Yellow */
   color: #00c3e3;
 }
 
+/* Responsive styles */
 @media (max-width: 768px) {
+  header .hamburger {
+      display: flex;
+  }
+
   header .navigation nav ul {
-      flex-direction: column;
-      align-items: flex-start;
-      background-color: #e60012;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      padding: 10px;
       display: none;
   }
 
@@ -65,5 +84,15 @@ header .navigation nav ul li a:hover {
 
   header .navigation {
       flex-direction: column;
+  }
+}
+
+header .navigation img.hidden {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  header .navigation img {
+    transition: opacity 0.3s ease;
   }
 }

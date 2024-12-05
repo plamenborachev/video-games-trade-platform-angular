@@ -54,7 +54,7 @@ gamesController.get('/details/:gameId', async (req, res) => {
     res.json(game);
 });
 
-gamesController.get('/like/:gameId', isAuth, async (req, res) => {
+gamesController.put('/like/:gameId', isAuth, async (req, res) => {
     const gameId = req.params.gameId;
     const userId = req.user._id;
     // const { game, owner, isOwner, signedUp, signUps} = await checkOwnerAndSignedUp(req, res);

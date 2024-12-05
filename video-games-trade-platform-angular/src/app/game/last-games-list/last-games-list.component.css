@@ -15,8 +15,7 @@
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   /* margin-bottom: 15px; */
-  width: 30%;
-  max-width: 420px;
+  max-width: 30%;
   min-height: 470px;
   /* text-align: left; */
   position: relative;
@@ -38,8 +37,9 @@
 .info .learn-more a {
   color: #00c3e3; /* Nintendo Blue */
   font-weight: bold;
+  font-size: larger;
   text-decoration: none;
-  position: absolute;
+  /* position: absolute; */
   bottom: 10px;
   right: 10px;
   transition: color 0.3s;

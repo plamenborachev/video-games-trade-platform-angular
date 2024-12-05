@@ -1,13 +1,21 @@
 <header>
     <div class="navigation">
-        <img src="./images/logo.png" >
+        <a routerLink="/home">
+            <img src="./images/logo.png" alt="Logo" [class.hidden]="menuOpen">
+        </a>        
+        <!-- Hamburger menu icon -->
+        <button class="hamburger" aria-label="Toggle navigation" (click)="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav>           
-            <ul>
-                    <!-- Guest users and Logged users -->
-                    <li><a routerLink="/home">Home</a></li>
-                    <li><a routerLink="/catalog">All Games</a></li>
+            <ul [class.open]="menuOpen">
+                <!-- Guest users and Logged users -->
+                <li><a routerLink="/home">Home</a></li>
+                <li><a routerLink="/catalog">All Games</a></li>
                 @if(isLoggedIn){
-                    <!--For loggin users-->
+                    <!--For logged-in users-->
                     <li><a routerLink="/profile">{{username | titlecase}}'s profile</a></li>
                     <li><a routerLink="/games/create">Create Game Offer</a></li>
                     <li><a (click)="logout()">Logout</a></li>    
@@ -17,7 +25,8 @@
                     <li><a routerLink="/register">Register</a></li>
                 }               
             </ul>
-        </nav>
-    </div>
+        </nav>        
+    </div>    
 </header>
+
 

@@ -47,6 +47,6 @@ export class ApiService {
 
     like(id: string){
         let url = `/api/games/like/${id}`;
-        return this.http.get(url);
+        return this.http.put(url, {});
     }
 }

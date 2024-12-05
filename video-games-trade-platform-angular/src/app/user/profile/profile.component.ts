@@ -5,11 +5,12 @@ import { User } from '../../types/user';
 import { LoaderComponent } from '../../shared/loader/loader.component';
 import { RouterLink } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { SlicePipe } from "../../shared/pipes/slice.pipe";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [LoaderComponent, RouterLink],
+  imports: [LoaderComponent, RouterLink, SlicePipe],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
@@ -45,7 +46,7 @@ export class ProfileComponent {
     });
 
     this.apiService.getAll().subscribe((games) => { 
-      console.log(games);
+      // console.log(games);
       this.gamesCreated = games.filter((game) => game.owner._id === this.user?._id);
       this.gamesLiked = games.filter((game) => game.likesList.some((like) => like._id === this.user?._id));
       // console.log();

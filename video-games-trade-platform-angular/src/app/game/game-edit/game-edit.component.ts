@@ -39,13 +39,13 @@ export class GameEditComponent {
   }
 
   editGame(form: NgForm) {
-    console.log(form);
+    // console.log(form);
 
     if (form.invalid) {
       console.error('Invalid edit game form');
       return;
     }
-    console.log(form.value);
+    // console.log(form.value);
 
     const {title, ganre, image, description, price } = form.value;
 

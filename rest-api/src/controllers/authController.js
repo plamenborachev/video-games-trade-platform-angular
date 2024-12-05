@@ -17,7 +17,7 @@ authController.post('/register', isGuest, async (req, res) => {
         // res.redirect('/');
         const user = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
         // console.log(user);
-        res.json(user);
+        res.status(200).json(user);
     } catch(err) {
         // const error = getErrorMessage(err);
         // res.render('auth/register', {title: 'Register Page', username, email, error});
@@ -35,7 +35,7 @@ authController.post('/login', isGuest, async (req, res) => {
         // res.redirect('/');
         const user = JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
         // console.log(user);
-        res.json(user);
+        res.status(200).json(user);
     } catch(err){
         // const error = getErrorMessage(err);
         // res.render('auth/login', {title: 'Login Page', email, error});
@@ -43,10 +43,10 @@ authController.post('/login', isGuest, async (req, res) => {
     }    
 });
 
-authController.get('/logout', isAuth, (req, res) => {
+authController.post('/logout', isAuth, (req, res) => {
     res.clearCookie(AUTH_COOKIE_NAME);
     // res.redirect('/');
-    res.status(204).end();
+    res.status(204).json({ message: 'Logged out!' }).end();
 });
 
 export default authController;

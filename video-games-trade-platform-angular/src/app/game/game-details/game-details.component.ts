@@ -11,7 +11,7 @@ import { SlicePipe } from "../../shared/pipes/slice.pipe";
 @Component({
   selector: 'app-game-details',
   standalone: true,
-  imports: [RouterLink, DatePipe, SlicePipe],
+  imports: [RouterLink, DatePipe],
   templateUrl: './game-details.component.html',
   styleUrl: './game-details.component.css'
 })
@@ -43,8 +43,8 @@ export class GameDetailsComponent implements OnInit{
 
     this.apiService.getOne(id).subscribe((game) => {
       this.game = game;
-      console.log(this.game);
-      console.log(this.game.likesList);
+      // console.log(this.game);
+      // console.log(this.game.likesList);
       this.likedBy = this.game.likesList.map(liked => liked.email).join(', ');
 
       if (this.game.owner._id === this.user._id){
@@ -61,7 +61,7 @@ export class GameDetailsComponent implements OnInit{
 
   like(){
     this.apiService.like(this.game._id).subscribe(() => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/catalog']);
       // this.router.navigate([`/games/details/${this.game._id}`]);
     }); 
   }

@@ -12,7 +12,7 @@ import { SlicePipe } from "../../shared/pipes/slice.pipe";
   standalone: true,
   imports: [RouterLink, LoaderComponent, ElapsedTimePipe, SlicePipe],
   templateUrl: './catalog.component.html',
-  styleUrl: './catalog.component.css'
+  styleUrl: './catalog.component.css',
 })
 export class CatalogComponent implements OnInit{
   games: Game[] = [];
