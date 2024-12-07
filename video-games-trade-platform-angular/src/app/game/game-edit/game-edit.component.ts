@@ -47,10 +47,11 @@ export class GameEditComponent {
     }
     // console.log(form.value);
 
-    const {title, ganre, image, description, price } = form.value;
+    const {title, ganre, image, description, location, price } = form.value;
 
-    this.apiService.edit(this.game._id, title, ganre, image, description, price).subscribe(() => {
-        this.router.navigate(['/catalog']);
+    this.apiService.edit(this.game._id, title, ganre, image, description, location, price).subscribe(() => {
+        // this.router.navigate(['/catalog']);
+        this.router.navigate([`/games/details/${this.game._id}`]);
     })
   }
 }

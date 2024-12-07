@@ -114,6 +114,34 @@
             </div>
             }
 
+            <label for="location">Location:</label>
+            <input
+                name="location"
+                type="text"
+                id="location"
+                placeholder="Location.."
+                
+                [class]="(
+                    (inputGameLocation?.touched && inputGameLocation?.errors?.['required'])
+                    || (inputGameLocation?.touched && inputGameLocation?.errors?.['minlength']))
+                    ? 'input-error': ''"
+                [(ngModel)]="address"
+                #inputGameLocation="ngModel"
+                required
+                minlength="5"
+            >
+
+            @if(inputGameLocation?.touched){
+            <div>
+                @if(inputGameLocation?.errors?.['required']){
+                <p class="error">Game location is required</p>
+                }
+                @if(inputGameLocation?.errors?.['minlength']){
+                <p class="error">Game location must be at least 5 characters long</p>
+                }
+            </div>
+            }
+
             <label for="price">Price:</label>
             <input
                 name="price"

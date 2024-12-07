@@ -36,15 +36,15 @@ export class ApiService {
         return this.http.get(url);
     }
 
-    createGame(title: string, ganre: string, image: string, description: string, price: number){
+    createGame(title: string, ganre: string, image: string, description: string, location: string, price: number){
         let url = '/api/games/create';
-        const payload = { title, ganre, image, description, price };
+        const payload = { title, ganre, image, description, location, price };
         return this.http.post<Game>(url, payload);
     }
 
-    edit(id: string, title: string, ganre: string, image: string, description: string, price: number){
+    edit(id: string, title: string, ganre: string, image: string, description: string, location: string,price: number){
         let url = `/api/games/edit/${id}`;
-        const payload = { title, ganre, image, description, price };
+        const payload = { title, ganre, image, description, location, price };
         return this.http.put<Game>(url, payload);
     }
 

@@ -10,7 +10,7 @@ gamesController.post('/create', isAuth, async (req, res) => {
     const gameData = req.body;
     const ownerId = req.user._id;
 
-    //console.log(deviceData);
+    // console.log(gameData);
 
     try {
         const game = await gamesService.create(gameData, ownerId);

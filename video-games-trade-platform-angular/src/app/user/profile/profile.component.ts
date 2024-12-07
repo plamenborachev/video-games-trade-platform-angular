@@ -8,6 +8,7 @@ import { Title } from '@angular/platform-browser';
 import { SlicePipe } from "../../shared/pipes/slice.pipe";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
+import { GeolocationService } from '../../geolocation/geolocation.service';
 
 @Component({
   selector: 'app-profile',
@@ -34,6 +35,7 @@ export class ProfileComponent implements OnInit{
     private apiService: ApiService,
     private titleService: Title,
     private userService: UserService,
+    private geolocationService: GeolocationService,
     ){
     this.titleService.setTitle("Profile");
   }  
@@ -47,7 +49,7 @@ export class ProfileComponent implements OnInit{
   ngOnInit(): void {
     this.user = this.userService.user!;
    
-    console.log(this.user);
+    // console.log(this.user);
 
     const { username, email, telephone } = this.userService.user!;
     this.profileDetails = { username, email, telephone };

@@ -10,4 +10,5 @@ export const corsMiddleware = (req, res, next) => {
     'Content-Type, Authorization');
 
     next();
+    //'http://localhost:4200'
 };

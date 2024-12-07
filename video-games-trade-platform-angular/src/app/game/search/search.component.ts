@@ -20,7 +20,7 @@ export class SearchComponent implements OnInit{
   isLoading = true;
 
   constructor(private apiService: ApiService, private titleService: Title, private router: Router) {
-    this.titleService.setTitle("Games Catalog");
+    this.titleService.setTitle("Games Search");
   }
 
   ngOnInit(): void {

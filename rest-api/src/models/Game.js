@@ -17,6 +17,11 @@ const gameSchema = new Schema({
         required: [true, 'Description is required!'],
         minLength: [10, 'The Description should be at least 10 characters, got \'{VALUE}\'!'],
     },
+    location: {
+        type: String,
+        required: [true, 'Location is required!'],
+        minLength: [5, 'The Location should be at least 5 characters, got \'{VALUE}\'!'],
+    },
     image: {
         type: String,
         required: [true, 'Image is required!'],

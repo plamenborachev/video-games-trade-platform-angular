@@ -4,7 +4,8 @@ export interface Game {
     _id: string;
     title: string;
     ganre: string;
-    description: string; 
+    description: string;
+    location: string; 
     image: string;
     price: number;
     likesList: User[];

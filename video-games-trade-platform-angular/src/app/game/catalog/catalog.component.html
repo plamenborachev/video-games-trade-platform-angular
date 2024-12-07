@@ -17,6 +17,7 @@
                         <h2>{{game.title}}</h2>
                         <h3>Seller: {{game.owner.username}}</h3>
                         <h3>Price: €{{game.price}}</h3>
+                        <h3>Location: {{game.location}}</h3>
                         <h3>Added: {{game.createdAt | elapsedTime}}</h3>
                         <h3>Likes: {{game.likesList.length}}</h3>
                         <h3>Description: {{game.description | slice: 50}}</h3>
