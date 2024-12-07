@@ -54,9 +54,13 @@ export class GameDetailsComponent implements OnInit{
   }
 
   delete(){
-    this.apiService.remove(this.game._id).subscribe(() => {
-      this.router.navigate(['/home']);
-    });    
+    var result = confirm(`Are you sure you want to delete '${this.game.title}'?`);
+    
+    if (result) {
+      this.apiService.remove(this.game._id).subscribe(() => {
+        this.router.navigate(['/home']);
+      });    
+    }    
   }
 
   like(){
