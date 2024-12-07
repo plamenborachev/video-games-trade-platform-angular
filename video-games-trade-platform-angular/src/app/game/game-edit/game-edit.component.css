@@ -29,7 +29,8 @@
     flex-direction: column;
 }
 
-.edit-container-info label {
+
+.edit-container-info label {    
     font-weight: bold;
     margin-bottom: 5px;
     color: #333;

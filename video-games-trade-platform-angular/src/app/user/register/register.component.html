@@ -48,7 +48,7 @@
 
         <label for="telephone">Telephone</label>
         <input
-          [class]="isFieldTextMissing('telephone') ? 'input-error' : ''"
+        [class]="isFieldTextMissing('telephone') || hasOnlyDigits ? 'input-error' : ''"
           type="telephone"
           name="telephone"
           id="telephone"
@@ -60,6 +60,9 @@
         <div>
             @if(form.get('telephone')?.errors?.['required']){
             <p class="error">Telephone is required!</p>
+            }
+            @if(form.get('telephone')?.errors?.['pattern']){
+              <p class="error">Telephone contains only digits!</p>
             }
         </div>
         }

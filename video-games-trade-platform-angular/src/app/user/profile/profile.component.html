@@ -1,14 +1,107 @@
-<section id="user">
-    <div class="user-info">
-        <div class="user-logo">
-            <img src="./images/Mario.jpg" alt="avatar">
-        </div>
-        <h1 class="user-email"></h1>
-        <h2 class="created-game-count">Username: {{user?.username}}</h2>
-        <h2 class="created-game-count">Email: {{user?.email}}</h2>    
-        <h2 class="created-game-count">Tel: {{user?.telephone}}</h2>    
-    </div>
-</section>
+<!-- READONLY MODE -->
+@if(!isEditMode){
+    <ng-container>
+        <section id="user">
+            <div class="user-info">
+                <div class="user-logo">
+                    <img src="./images/Mario.jpg" alt="avatar">
+                </div>
+                <!-- <h1 class="user-email"></h1> -->
+                <!-- <h2 class="created-game-count">Username: {{user.username}}</h2>
+                <h2 class="created-game-count">Email: {{user.email}}</h2>    
+                <h2 class="created-game-count">Tel: {{user.telephone}}</h2> -->
+
+                <h2 class="created-game-count">Username: {{profileDetails.username}}</h2>
+                <h2 class="created-game-count">Email: {{profileDetails.email}}</h2>    
+                <h2 class="created-game-count">Tel: {{profileDetails.telephone}}</h2>
+
+                <a (click)="toggleEditMode()">Edit</a>
+            </div>
+        </section>
+    </ng-container>
+} @else {
+<!-- EDIT MODE -->
+<ng-container>
+    <form [formGroup]="form" (ngSubmit)="handleSaveProfile()">
+        <section id="user">
+            <div class="user-info">
+                <div class="user-logo">
+                    <img src="./images/Mario.jpg" alt="avatar">
+                </div>
+
+                <label for="username">Username</label>
+                <input
+                [class]="isFieldTextMissing('username') || isNotMinLength ? 'input-error' : ''"
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username.."
+                formControlName="username"
+                value="this.user.username"
+                />
+
+                @if(form.get('username')?.touched){
+                <div>
+                    @if(form.get('username')?.errors?.['required']){
+                    <p class="error">Username is required!</p>
+                    }
+                    <!--  -->
+                    @if(form.get('username')?.errors?.['minlength']){
+                    <p class="error">Username must be at least 5 characters!</p>
+                    }
+                </div>
+                }
+                
+                <label for="email">Email</label>
+                <input
+                [class]="isFieldTextMissing('email') || isEmailNotValid ? 'input-error' : ''"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email.."
+                formControlName="email"
+                />
+
+                @if(form.get('email')?.touched){
+                <div>
+                    @if(form.get('email')?.errors?.['required']){
+                    <p class="error">Email is required!</p>
+                    }
+                    <!--  -->
+                    @if(form.get('email')?.errors?.['email']){
+                    <p class="error">Email is not valid!</p>
+                    }
+                </div>
+                }
+
+                <label for="telephone">Telephone</label>
+                <input
+                [class]="isFieldTextMissing('telephone') || hasOnlyDigits ? 'input-error' : ''"
+                type="telephone"
+                name="telephone"
+                id="telephone"
+                placeholder="Telephone.."
+                formControlName="telephone"
+                />
+
+                @if(form.get('telephone')?.touched){
+                <div>
+                    @if(form.get('telephone')?.errors?.['required']){
+                    <p class="error">Telephone is required!</p>
+                    }
+                    @if(form.get('telephone')?.errors?.['pattern']){
+                        <p class="error">Telephone contains only digits!</p>
+                      }
+                </div>
+                }
+
+                <a (click)="onCancel($event)">Cancel</a>
+                <input type="submit" [disabled]="form.invalid" [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }" value="Save">
+            </div>
+        </section>
+    </form>
+</ng-container>
+}
 
 <section class="profile-game">
     <div class="created-game">
@@ -35,7 +128,7 @@
     </div>    
 
     <div class="like-game">
-        <h2 class="section-title">Liked Games</h2>
+        <h2 class="section-title">Favorites</h2>
         <h2 class="like-game-count">Total Liked Games: {{gamesLiked.length}}</h2>
         @if(isLoading){
             <app-loader />

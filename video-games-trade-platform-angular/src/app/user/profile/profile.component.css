@@ -32,6 +32,110 @@
   color: #333;
 }
 
+.user-info a {
+  background-color: #e60012; /* Nintendo Switch Red */
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.user-info a:hover {
+  background-color: #ffcc00; /* Nintendo Switch Yellow */
+  color: #333;
+}
+
+.user-info form {
+  background: #fff;
+  border: 2px solid #e60012;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info label {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.user-info input[type="text"],
+.user-info input[type="email"],
+.user-info input[type="telephone"],
+.user-info input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  width: 95%;
+}
+
+.user-info input:focus {
+  border-color: #e60012;
+  outline: none;
+}
+
+.user-info input.input-error {
+  border-color: #ff0000; /* Error Red */
+}
+
+.user-info .error {
+  color: #ff0000;
+  font-size: 0.9rem;
+  margin: -10px 0 10px 0;
+}
+
+.user-info input[type="submit"] {
+  /* background-color: #00c3e3; Nintendo Blue */
+  color: #fff;
+  margin: 0px 30px;
+  padding: 10px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.user-info input[type="submit"]:hover {
+  /* background-color: #007a99; */
+  background-color: #ffcc00; /* Nintendo Switch Yellow */
+  color: #333;
+}
+
+.user-info input[type="submit"]:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
+.user-info p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.user-info p a {
+  color: #00c3e3; /* Nintendo Blue */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+/* Darker Blue */
+.user-info p a:hover {
+  color: #007a99; 
+}
+
 .profile-game {
   display: flex;
   justify-content: space-evenly;

@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Game } from "./types/game";
 
@@ -16,6 +16,14 @@ export class ApiService {
     getAll(){
         let url = '/api/games/catalog';
         return this.http.get<Game[]>(url);
+    }
+
+    search(title: string, ganre: string){
+        let url = '/api/games/search';
+        let params = new HttpParams();
+        params = params.append('title', title);
+        params = params.append('ganre', ganre);
+        return this.http.get<Game[]>(url, { params });
     }    
 
     getOne(id: string){

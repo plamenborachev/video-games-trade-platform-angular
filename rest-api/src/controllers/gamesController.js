@@ -29,6 +29,13 @@ gamesController.get('/catalog', async (req, res) => {
     res.json(games);
 });
 
+gamesController.get('/search', async (req, res) => {
+    const filter = req.query;
+    // console.log(filter);
+    const games = await gamesService.getAll(filter).lean();
+    res.json(games);
+});
+
 gamesController.get('/details/:gameId', async (req, res) => {
     // const { game, owner, isOwner, signedUp, signUps } = await checkOwnerAndSignedUp(req, res);
 
@@ -135,6 +142,8 @@ gamesController.delete('/delete/:gameId', isAuth, async (req, res) => {
         res.status(400).json({ message: getErrorMessage(err) })
     }
 });
+
+
 
 async function checkOwnerAndSignedUp(req, res) {
     const gameId = req.params.gameId;

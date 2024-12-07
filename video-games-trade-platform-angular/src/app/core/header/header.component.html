@@ -14,6 +14,7 @@
                 <!-- Guest users and Logged users -->
                 <li><a routerLink="/home">Home</a></li>
                 <li><a routerLink="/catalog">All Games</a></li>
+                <li><a routerLink="/search">Search</a></li>
                 @if(isLoggedIn){
                     <!--For logged-in users-->
                     <li><a routerLink="/profile">{{username | titlecase}}'s profile</a></li>

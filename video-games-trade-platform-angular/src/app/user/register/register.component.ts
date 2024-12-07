@@ -24,12 +24,9 @@ export class RegisterComponent {
   }
 
   form = new FormGroup({
-    username: new FormControl('', [
-      Validators.required,
-      Validators.minLength(5),
-    ]),
+    username: new FormControl('', [Validators.required, Validators.minLength(5),]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    telephone: new FormControl('', [Validators.required]),
+    telephone: new FormControl('', [Validators.required, Validators.pattern('[0-9]+')]),
     passGroup: new FormGroup(
       {
         password: new FormControl('', [
@@ -62,6 +59,13 @@ export class RegisterComponent {
     return (
       this.form.get('email')?.touched &&
       this.form.get('email')?.errors?.['email']
+    );
+  }
+
+  get hasOnlyDigits() {
+    return (
+      this.form.get('telephone')?.touched &&
+      this.form.get('telephone')?.errors?.['pattern']
     );
   }
 

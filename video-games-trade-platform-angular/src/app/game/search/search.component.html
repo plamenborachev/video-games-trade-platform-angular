@@ -1,0 +1,71 @@
+<article class="all-game-title">
+    <h1>SEARCH GAMES</h1>
+</article>
+
+<div class="search-container-info">
+    <form id="searchForm" class="search-form" #form="ngForm" (ngSubmit)="searchGame(form)">
+        <label for="title">Title:</label>
+        <input                
+            name="title"
+            type="text"
+            id="title"
+            placeholder="Title.."
+
+            ngModel
+            #inputGameName="ngModel"
+        >
+
+        <label for="ganre">Ganre:</label>
+        <input
+            name="ganre"
+            type="text"
+            id="ganre"
+            placeholder="Ganre.."
+            
+            ngModel
+            #inputGameGanre="ngModel"
+        >
+
+        <input
+            type="submit"
+            id="btn"
+            [disabled]="form.invalid"
+            [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }"
+            value="Search"
+        />
+    </form>
+</div>
+
+<section id="all-game-page">
+    @if(isLoading){
+        <app-loader />
+    } @else {
+        @if (games && games.length > 0) {
+            @for (game of games; track $index) {
+                <article class="all-game-card">
+                    <article class="all-game-card-image">
+                        <img src="{{game.image}}" alt="{{game.title}}">
+                    </article>
+                
+                    <article class="all-game-card-content">
+                        <h2>{{game.title}}</h2>
+                        <h3>Ganre: {{game.ganre}}</h3>
+                        <h3>Seller: {{game.owner.username}}</h3>
+                        <h3>Price: €{{game.price}}</h3>
+                        <h3>Added: {{game.createdAt | elapsedTime}}</h3>
+                        <h3>Likes: {{game.likesList.length}}</h3>
+                        <h3>Description: {{game.description | slice: 50}}</h3>
+                    </article>
+                
+                    <article class="all-game-card-buttons">
+                        <a routerLink="/games/details/{{game._id}}" class="btn-details">Details</a>
+                    </article>
+                </article>
+            }
+        } @else {
+            <article class="not-available-games">
+                <h1>No game found!</h1>
+            </article>
+        }
+    }    
+</section>

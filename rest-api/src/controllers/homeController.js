@@ -22,6 +22,18 @@ homeController.get('/profile', isAuth, async (req, res) => {
     res.status(200).json(user);
 });
 
+homeController.put('/profile', isAuth, async (req, res) => {
+    const userId = req.user._id;
+    const userData = req.body;
+
+    try {
+        const updatedUser = await userService.edit(userId, userData);
+        res.json(updatedUser);
+    } catch (err) {
+        res.status(400).json({ message: getErrorMessage(err) });
+    }
+});
+
 // homeController.get('/about', (req, res) => {
 //     res.render('home/about', {title: 'TechStore - About Us'});
 // });

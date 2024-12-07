@@ -1,6 +1,20 @@
 import Game from '../models/Game.js'
 
-const getAll = () => Game.find().populate('likesList owner');
+// const getAll = () => Game.find().populate('likesList owner');
+
+const getAll = (filter = {}) => {
+    let gamesQuery = Game.find().populate('likesList owner');
+
+    if (filter.title) {
+        gamesQuery.find({ title: { $regex: filter.title, $options: 'i' } }).populate('likesList owner');
+    }
+
+    if (filter.ganre) {
+        gamesQuery.find({ ganre: { $regex: filter.ganre, $options: 'i' } }).populate('likesList owner');
+    }
+
+    return gamesQuery;
+};
 
 const getTopThree = () => Game.find().populate('likesList owner').sort({createdAt: -1}).limit(3);
 

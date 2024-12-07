@@ -1,0 +1,166 @@
+.search-container-info {
+    background: #fff;
+    border: 2px solid #e60012;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 60%;
+    /* max-width: 600px; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-container-info form {
+    display: flex;
+    flex-direction: row;
+}
+
+.search-container-info label {
+    display: block;
+    margin-top: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    /* margin-bottom: 5px; */
+    color: #333;
+}
+
+.search-container-info input {
+    width: 100%;
+    padding: 10px;
+    /* margin-bottom: 15px; */
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    margin-left: 20px;
+}
+
+.search-container-info input:focus {
+    border-color: #00c3e3;
+    outline: none;
+}
+
+.search-container-info input[type="submit"] {
+    background-color: #00c3e3; /* Nintendo Blue */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container-info input[type="submit"]:hover {
+    background-color: #007a99;
+}
+
+#all-game-page {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f4f4f4; /* Light Gray */  
+  }
+  
+  .all-game-title h1 {
+    font-size: 2rem;
+    color: #e60012; /* Nintendo Switch Red */
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .all-game-card {
+    /* display: flex; */
+     /* flex-direction: column; */
+    flex: 45%; 
+    background: #fff;
+    border: 2px solid #e60012;
+    border-radius: 20px;
+    margin: 20px auto 50px auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+    /* margin: 15px 0; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* width: 90%; */
+    max-width: 30%;
+    transition: transform 0.3s;
+  }
+  
+  .all-game-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .all-game-card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .all-game-card-content {
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .all-game-card-content h2 {
+    font-size: 1.5rem;
+    color: #e60012;
+    margin-bottom: 10px;
+  }
+  
+  .all-game-card-content h3 {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .all-game-card-buttons {
+    padding: 10px;
+    text-align: center;
+    background: #e60012;
+  }
+  
+  .all-game-card-buttons a.btn-details {
+    display: inline-block;
+    color: #fff;
+    background: #00c3e3;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .all-game-card-buttons a.btn-details:hover {
+    background: #ffcc00; /* Nintendo Switch Yellow */
+  }
+
+  .not-available-games{
+    margin: 50px auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+  }
+  
+  .not-available-games h1 {
+    font-size: 2rem;
+    /* color: #555; */
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .all-game-card {
+        width: 100%;
+    }
+  
+    .all-game-card-content h2 {
+        font-size: 1.2rem;
+    }
+  
+    .all-game-card-content h3 {
+        font-size: 0.9rem;
+    }
+  }
+  
