@@ -168,13 +168,16 @@
             </div>
             }
 
-            <input
-                type="submit"
-                id="btn"
-                [disabled]="form.invalid"
-                [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }"
-                value="Edit"
-            />
+            <div class="btn-container">
+                <button (click)="goBack()">Cancel</button>                
+                <button
+                    type="submit"
+                    id="btn"
+                    [disabled]="form.invalid"
+                    [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }"
+                    value="Edit"
+                >Edit</button>                
+            </div>            
         </form>
     </div>
 </section>

@@ -6,7 +6,7 @@ import { UserService } from '../../user/user.service';
 import { User } from '../../types/user';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { SlicePipe } from "../../shared/pipes/slice.pipe";
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-game-details',
@@ -27,7 +27,8 @@ export class GameDetailsComponent implements OnInit{
     private apiService: ApiService,
     private userService: UserService,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private location: Location,
   ) {
     this.titleService.setTitle("Game Details");
   }
@@ -53,6 +54,10 @@ export class GameDetailsComponent implements OnInit{
       this.isLiked = this.game.likesList.some(like => like._id.toString() === this.userService.user?._id);          });
   }
 
+  goBack() {
+    this.location.back();
+  }
+
   delete(){
     var result = confirm(`Are you sure you want to delete '${this.game.title}'?`);
     
@@ -64,9 +69,13 @@ export class GameDetailsComponent implements OnInit{
   }
 
   like(){
-    this.apiService.like(this.game._id).subscribe(() => {
-      this.router.navigate(['/catalog']);
-      // this.router.navigate([`/games/details/${this.game._id}`]);
-    }); 
+    var result = confirm(`Are you sure you want to like '${this.game.title}'?`);
+    
+    if (result) {
+      this.apiService.like(this.game._id).subscribe(() => {
+        this.router.navigate(['/catalog']);
+        // this.router.navigate([`/games/details/${this.game._id}`]);
+      }); 
+    }    
   }
 }

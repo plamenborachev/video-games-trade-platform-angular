@@ -117,9 +117,18 @@
                   }
                 </div>
                 }
-        </div>       
-       
-        <input type="submit" [disabled]="form.invalid" [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }" value="Register">
+        </div>     
+
+        <div class="btn-container">
+          <button (click)="goBack()">Go Back</button> 
+          <input
+            type="submit"
+            [disabled]="form.invalid"
+            [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }"
+            value="Register">
+        </div>
+
+        
     </form>
     <p>Already have an account? <a routerLink="/login">Login here</a></p>
 </div>

@@ -65,7 +65,7 @@
 .register-box input[type="submit"] {
   /* background-color: #00c3e3; Nintendo Blue */
   color: #fff;
-  padding: 10px;
+  padding: 10px 30px;
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -98,6 +98,13 @@
 /* Darker Blue */
 .register-box p a:hover {
   color: #007a99; 
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 @media (max-width: 768px) {

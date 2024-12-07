@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../user.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,17 @@ import { Title } from '@angular/platform-browser';
 })
 export class LoginComponent {
 
-  constructor(private userService: UserService, private router: Router, private titleService: Title) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private titleService: Title,
+    private location: Location,
+  ) {
     this.titleService.setTitle("Login");
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   login(form: NgForm) {

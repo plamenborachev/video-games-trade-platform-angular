@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-game-edit',
@@ -19,7 +20,8 @@ export class GameEditComponent {
     private route: ActivatedRoute,
     private apiService: ApiService,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private location: Location,
   ) {
     this.titleService.setTitle("Edit Game");
   }
@@ -36,6 +38,10 @@ export class GameEditComponent {
       // this.liked = Object.values(result).at(3);
       // this.likedBy = Object.values(result).at(4);      
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   editGame(form: NgForm) {

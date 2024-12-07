@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
 import { UserService } from '../user.service';
 import { Title } from '@angular/platform-browser';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +15,12 @@ import { Title } from '@angular/platform-browser';
 })
 export class RegisterComponent {
 
-  constructor(private userService: UserService, private router: Router, private titleService: Title) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private titleService: Title,
+    private location: Location,
+  ) {
     this.titleService.setTitle("Register");
   }
 
@@ -40,6 +41,10 @@ export class RegisterComponent {
       }
     ),
   });
+
+  goBack() {
+    this.location.back();
+  }
 
   isFieldTextMissing(controlName: string) {
     return (

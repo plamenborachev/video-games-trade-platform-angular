@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { GeolocationService } from '../../geolocation/geolocation.service';
 import { GeocodingService } from '../../geolocation/geocoding.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-game-create',
@@ -22,6 +23,7 @@ export class GameCreateComponent implements OnInit{
     private titleService: Title,
     private geolocationService: GeolocationService,
     private geocodingService: GeocodingService,
+    private location: Location,
   ) {
     this.titleService.setTitle("Create Game");
   }
@@ -48,6 +50,10 @@ export class GameCreateComponent implements OnInit{
         console.error('Error getting geolocation:', error);
       },
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   addGame(form: NgForm) {

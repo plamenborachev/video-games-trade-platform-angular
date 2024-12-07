@@ -22,7 +22,8 @@
     </div>
 
     <div class="btn-container">
-    @if(isLoggedIn){ 
+        <button (click)="goBack()">Go Back</button> 
+        @if(isLoggedIn){ 
             <!-- Only for registered user and creator of the game-->
             @if(isOwner){
                 <a routerLink="/games/edit/{{game._id}}">Edit</a>
@@ -36,6 +37,6 @@
                     <a (click)="like()">Like</a>
                 }
             }
-    }    
+        }    
     </div>
 </div>
