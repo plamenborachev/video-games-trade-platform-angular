@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "main": "",
     "scripts": {
-        "start": "npm start --prefix server",
-        "install-client": "cd video-games-trade-platform-angular && npm install && ng serve && cd ..",
-        "install-server": "cd rest-api && npm install && cd .. ",
-        "heroku-postbuild": "npm run install-client && npm run install-server"
+        "start": "npm start",
+        "install-server": "cd rest-api && npm install && npm start && cd .. ",
+        "install-client": "cd video-games-trade-platform-angular && npm install && ng serve && cd ..",        
+        "heroku-postbuild": "npm run install-server && npm run install-client"
     }
 }
