@@ -1,7 +1,7 @@
 <div class="register-box">
-    <h1>REGISTER</h1>
+    <h1 @bounce>REGISTER</h1>
 
-    <form [formGroup]="form" (ngSubmit)="register()">
+    <form [formGroup]="form" (ngSubmit)="register()" @fadeIn>
         <label for="username">Username</label>
         <input
         [class]="isFieldTextMissing('username') || isNotMinLength ? 'input-error' : ''"
@@ -126,9 +126,8 @@
             [disabled]="form.invalid"
             [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }"
             value="Register">
-        </div>
-
-        
+        </div>        
     </form>
-    <p>Already have an account? <a routerLink="/login">Login here</a></p>
+
+    <p @fadeInSlow>Already have an account? <a routerLink="/login">Login here</a></p>
 </div>

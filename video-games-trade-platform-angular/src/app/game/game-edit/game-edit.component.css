@@ -37,7 +37,8 @@
 }
 
 .edit-container-info input,
-.edit-container-info textarea {
+.edit-container-info textarea,
+.edit-container-info select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -49,7 +50,7 @@
 
 .edit-container-info input:focus,
 .edit-container-info textarea:focus {
-    border-color: #e60012;
+    border-color: #00c3e3;
     outline: none;
 }
 
@@ -77,7 +78,7 @@
 }
 
 .edit-container-info input[type="submit"]:hover {
-    background-color: #007a99;
+    background-color: #ffcc00;
 }
 
 .edit-container-info input[type="submit"]:disabled {

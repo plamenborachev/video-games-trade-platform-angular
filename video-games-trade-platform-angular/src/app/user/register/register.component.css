@@ -48,7 +48,7 @@
 }
 
 .register-box input:focus {
-  border-color: #e60012;
+  border-color: #00c3e3;
   outline: none;
 }
 
@@ -65,7 +65,7 @@
 .register-box input[type="submit"] {
   /* background-color: #00c3e3; Nintendo Blue */
   color: #fff;
-  padding: 10px 30px;
+  padding: 10px 25px;
   border: none;
   border-radius: 5px;
   font-weight: bold;

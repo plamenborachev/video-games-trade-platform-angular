@@ -6,6 +6,7 @@ import { ApiService } from '../../api.service';
 import { ElapsedTimePipe } from "../../shared/pipes/elapsed-time.pipe";
 import { Title } from '@angular/platform-browser';
 import { SlicePipe } from "../../shared/pipes/slice.pipe";
+import { animations } from '../../animations/animations';
 
 @Component({
   selector: 'app-catalog',
@@ -13,6 +14,10 @@ import { SlicePipe } from "../../shared/pipes/slice.pipe";
   imports: [RouterLink, LoaderComponent, ElapsedTimePipe, SlicePipe],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css',
+  animations: [
+    animations.bounceAnimation,
+    animations.fadeInAnimation,    
+  ],
 })
 export class CatalogComponent implements OnInit{
   games: Game[] = [];
@@ -27,7 +32,6 @@ export class CatalogComponent implements OnInit{
       // console.log(games);
 
       this.games = games;
-      // this.games.forEach((game) => game.createdAt = formatDate(game.createdAt, DATE_TIME_FORMAT, LOCALE));
       this.isLoading = false;
     });
   }

@@ -1,7 +1,7 @@
 <!-- READONLY MODE -->
 @if(!isEditMode){
     <ng-container>
-        <section id="user">
+        <section id="user" @fadeIn>
             <div class="user-info">
                 <div class="user-logo">
                     <img src="./images/Mario.jpg" alt="avatar">
@@ -103,9 +103,9 @@
 </ng-container>
 }
 
-<section class="profile-game">
+<section class="profile-game" @fadeInSlow>
     <div class="created-game">
-        <h2 class="section-title">Created Games</h2>
+        <h2 class="section-title">CREATED</h2>
         <h2 class="created-game-count">Total Created Games: {{gamesCreated.length}}</h2>
 
         @if(isLoading){
@@ -114,7 +114,7 @@
             @if (gamesCreated) {
                 @for (game of gamesCreated; track $index) {
                     <div class="info">
-                        <h2 class="title">{{game.title | slice: 20}}</h2>
+                        <h2 class="title">{{game.title | slice: 30}}</h2>
                         <!-- <h4 class="genre">Ganre: {{game.ganre}}</h4> -->
                         <div class="learn-more">
                             <a routerLink="/games/details/{{game._id}}">Learn More...</a>
@@ -128,7 +128,7 @@
     </div>    
 
     <div class="like-game">
-        <h2 class="section-title">Favorites</h2>
+        <h2 class="section-title">FAVORITES</h2>
         <h2 class="like-game-count">Total Liked Games: {{gamesLiked.length}}</h2>
         @if(isLoading){
             <app-loader />
@@ -136,7 +136,7 @@
             @if (gamesLiked) {
                 @for (game of gamesLiked; track $index) {
                     <div class="info">
-                        <h2 class="title">{{game.title | slice: 20}}</h2>
+                        <h2 class="title">{{game.title | slice: 30}}</h2>
                         <!-- <h4 class="genre">Ganre: {{game.ganre}}</h4> -->
                         <div class="learn-more">
                             <a routerLink="/games/details/{{game._id}}">Learn More...</a>

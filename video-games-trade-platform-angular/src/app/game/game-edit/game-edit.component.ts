@@ -5,13 +5,19 @@ import { ApiService } from '../../api.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+import { animations } from '../../animations/animations';
 
 @Component({
   selector: 'app-game-edit',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './game-edit.component.html',
-  styleUrl: './game-edit.component.css'
+  styleUrl: './game-edit.component.css',
+  animations: [
+    animations.bounceAnimation,
+    animations.fadeInAnimation,
+    animations.fadeInSlowAnimation,
+  ],
 })
 export class GameEditComponent {
   game = {} as Game;
@@ -46,18 +52,23 @@ export class GameEditComponent {
 
   editGame(form: NgForm) {
     // console.log(form);
-
-    if (form.invalid) {
-      console.error('Invalid edit game form');
-      return;
-    }
-    // console.log(form.value);
-
-    const {title, ganre, image, description, location, price } = form.value;
-
-    this.apiService.edit(this.game._id, title, ganre, image, description, location, price).subscribe(() => {
-        // this.router.navigate(['/catalog']);
-        this.router.navigate([`/games/details/${this.game._id}`]);
-    })
+    // var result = confirm(`Are you sure you want to save changes to '${this.game.title}'?`);
+    
+    // if (result) {
+      if (form.invalid) {
+        console.error('Invalid edit game form');
+        return;
+      }
+      // console.log(form.value);
+  
+      const {title, ganre, image, description, location, price } = form.value;
+  
+      this.apiService.edit(this.game._id, title, ganre, image, description, location, price).subscribe(() => {
+          // this.router.navigate(['/catalog']);
+          this.router.navigate([`/games/details/${this.game._id}`]);
+      })
+    // } else {
+    //   this.router.navigate([`/games/details/${this.game._id}`]);
+    // }
   }
 }

@@ -1,8 +1,9 @@
-<section id="create-container">
+<section id="create-container" >    
     <div class="create-container-info">
-        <h1>CREATE GAME</h1>
 
-        <form #form="ngForm" (ngSubmit)="addGame(form)">
+        <h1 @bounce>CREATE GAME</h1>
+
+        <form #form="ngForm" (ngSubmit)="addGame(form)" @fadeIn>
             <label for="title">Title:</label>
             <input                
                 name="title"
@@ -32,7 +33,7 @@
             }
 
             <label for="ganre">Ganre:</label>
-            <input
+            <!-- <input
                 name="ganre"
                 type="text"
                 id="ganre"
@@ -46,15 +47,44 @@
                 #inputGameGanre="ngModel"
                 required
                 minlength="5"
-            >
+            > -->
+            <select
+                name="ganre"
+                type="text"
+                id="ganre"
+                placeholder="Ganre.."
+
+                [class]="(inputGameGanre?.touched && inputGameGanre?.errors?.['minlength']) ? 'input-error': ''"
+                ngModel
+                #inputGameGanre="ngModel"
+                required
+            >              
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Arcade">Arcade</option>
+                <option value="Board game">Board game</option>
+                <option value="Education">Education</option>
+                <option value="Fighting">Fighting</option>
+                <option value="First-person">First-person</option>
+                <option value="Lifestyle">Lifestyle</option>
+                <option value="Multiplayer">Multiplayer</option>
+                <option value="Music">Music</option>                
+                <option value="Party">Party</option>
+                <option value="Platformer">Platformer</option>
+                <option value="Puzzle">Puzzle</option>
+                <option value="Racing">Racing</option>
+                <option value="Role-playing">Role-playing</option>
+                <option value="Simulation">Simulation</option>
+                <option value="Sports">Sports</option>
+                <option value="Strategy">Strategy</option>
+                <option value="Training">Training</option>
+                <option value="Other">Other</option>
+            </select>
 
             @if(inputGameGanre?.touched){
             <div>
                 @if(inputGameGanre?.errors?.['required']){
-                <p class="error">Game ganre is required</p>
-                }
-                @if(inputGameGanre?.errors?.['minlength']){
-                <p class="error">Game ganre must be at least 5 characters long</p>
+                    <p class="error">Game ganre is required</p>
                 }
             </div>
             }

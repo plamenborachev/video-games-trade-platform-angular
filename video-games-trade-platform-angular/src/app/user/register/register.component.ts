@@ -5,6 +5,7 @@ import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
 import { UserService } from '../user.service';
 import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+import { animations } from '../../animations/animations';
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,11 @@ import { Location } from '@angular/common';
   imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
+  animations: [
+    animations.bounceAnimation,
+    animations.fadeInAnimation,
+    animations.fadeInSlowAnimation,
+  ],
 })
 export class RegisterComponent {
 

@@ -7,13 +7,17 @@ import { User } from '../../types/user';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+import { animations } from '../../animations/animations';
 
 @Component({
   selector: 'app-game-details',
   standalone: true,
   imports: [RouterLink, DatePipe],
   templateUrl: './game-details.component.html',
-  styleUrl: './game-details.component.css'
+  styleUrl: './game-details.component.css',
+  animations: [
+    animations.fadeInAnimation,
+  ],
 })
 export class GameDetailsComponent implements OnInit{
   game = {} as Game;
@@ -63,7 +67,7 @@ export class GameDetailsComponent implements OnInit{
     
     if (result) {
       this.apiService.remove(this.game._id).subscribe(() => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/profile']);
       });    
     }    
   }
@@ -73,7 +77,7 @@ export class GameDetailsComponent implements OnInit{
     
     if (result) {
       this.apiService.like(this.game._id).subscribe(() => {
-        this.router.navigate(['/catalog']);
+        this.router.navigate(['/profile']);
         // this.router.navigate([`/games/details/${this.game._id}`]);
       }); 
     }    

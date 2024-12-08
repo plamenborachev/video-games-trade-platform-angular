@@ -1,8 +1,8 @@
 <div class="login-box">
 
-    <h1>LOGIN</h1>
+    <h1 @bounce>LOGIN</h1>
 
-    <form class="login" #form="ngForm" (ngSubmit)="login(form)">
+    <form class="login" #form="ngForm" (ngSubmit)="login(form)" @fadeIn>
         <label for="email">Email</label>
         <input
             [class]="(
@@ -69,6 +69,6 @@
         
     </form>
 
-    <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+    <p @fadeInSlow>Don't have an account? <a routerLink="/register">Register here</a></p>
 
 </div>

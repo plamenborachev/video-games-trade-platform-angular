@@ -4,13 +4,19 @@ import { UserService } from '../user.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+import { animations } from '../../animations/animations';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [RouterLink, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
+  animations: [
+    animations.bounceAnimation,
+    animations.fadeInAnimation,
+    animations.fadeInSlowAnimation,
+  ],
 })
 export class LoginComponent {
 

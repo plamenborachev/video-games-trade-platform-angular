@@ -6,13 +6,19 @@ import { Title } from '@angular/platform-browser';
 import { GeolocationService } from '../../geolocation/geolocation.service';
 import { GeocodingService } from '../../geolocation/geocoding.service';
 import { Location } from '@angular/common';
+import { animations } from '../../animations/animations';
 
 @Component({
   selector: 'app-game-create',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './game-create.component.html',
-  styleUrl: './game-create.component.css'
+  styleUrl: './game-create.component.css',
+  animations: [
+    animations.bounceAnimation,
+    animations.fadeInAnimation,
+    animations.fadeInSlowAnimation,
+  ],
 })
 export class GameCreateComponent implements OnInit{
   address: string = "";

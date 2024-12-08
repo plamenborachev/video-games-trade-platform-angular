@@ -9,13 +9,18 @@ import { SlicePipe } from "../../shared/pipes/slice.pipe";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { GeolocationService } from '../../geolocation/geolocation.service';
+import { animations } from '../../animations/animations';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   imports: [LoaderComponent, RouterLink, SlicePipe, ReactiveFormsModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
+  animations: [
+    animations.fadeInAnimation,
+    animations.fadeInSlowAnimation,
+  ],
 })
 export class ProfileComponent implements OnInit{
   user: UserForAuth | undefined;

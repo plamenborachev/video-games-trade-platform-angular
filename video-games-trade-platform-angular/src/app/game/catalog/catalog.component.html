@@ -1,8 +1,8 @@
-<article class="all-game-title">
+<article class="all-game-title" @bounce>
     <h1>ALL GAMES</h1>
 </article>
 
-<section id="all-game-page">
+<section id="all-game-page" @fadeIn>
     @if(isLoading){
         <app-loader />
     } @else {

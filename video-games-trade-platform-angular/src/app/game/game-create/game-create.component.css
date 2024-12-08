@@ -36,7 +36,8 @@
 }
 
 .create-container-info input,
-.create-container-info textarea {
+.create-container-info textarea,
+.create-container-info select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -48,7 +49,7 @@
 
 .create-container-info input:focus,
 .create-container-info textarea:focus {
-    border-color: #e60012;
+    border-color: #00c3e3;
     outline: none;
 }
 

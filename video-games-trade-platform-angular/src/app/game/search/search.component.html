@@ -1,22 +1,21 @@
-<article class="all-game-title">
+<article class="all-game-title" @bounce>
     <h1>SEARCH GAMES</h1>
 </article>
 
-<div class="search-container-info">
+<div class="search-container-info" @fadeIn>
     <form id="searchForm" class="search-form" #form="ngForm" (ngSubmit)="searchGame(form)">
         <label for="title">Title:</label>
         <input                
             name="title"
             type="text"
             id="title"
-            placeholder="Title.."
 
             ngModel
             #inputGameName="ngModel"
         >
 
         <label for="ganre">Ganre:</label>
-        <input
+        <!-- <input
             name="ganre"
             type="text"
             id="ganre"
@@ -24,7 +23,38 @@
             
             ngModel
             #inputGameGanre="ngModel"
-        >
+        > -->
+        <select
+            name="ganre"
+            type="text"
+            id="ganre"
+
+            [class]="(inputGameGanre?.touched && inputGameGanre?.errors?.['minlength']) ? 'input-error': ''"
+            ngModel
+            #inputGameGanre="ngModel"
+        >              
+            <option value=""></option>    
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Arcade">Arcade</option>
+            <option value="Board game">Board game</option>
+            <option value="Education">Education</option>
+            <option value="Fighting">Fighting</option>
+            <option value="First-person">First-person</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Multiplayer">Multiplayer</option>
+            <option value="Music">Music</option>                
+            <option value="Party">Party</option>
+            <option value="Platformer">Platformer</option>
+            <option value="Puzzle">Puzzle</option>
+            <option value="Racing">Racing</option>
+            <option value="Role-playing">Role-playing</option>
+            <option value="Simulation">Simulation</option>
+            <option value="Sports">Sports</option>
+            <option value="Strategy">Strategy</option>
+            <option value="Training">Training</option>
+            <option value="Other">Other</option>
+        </select>
 
         <input
             type="submit"
@@ -36,7 +66,7 @@
     </form>
 </div>
 
-<section id="all-game-page">
+<section id="all-game-page" @fadeInSlow>
     @if(isLoading){
         <app-loader />
     } @else {

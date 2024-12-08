@@ -1,4 +1,4 @@
-<div class="details-container">
+<div class="details-container" @fadeIn>
     <div class="details-container-image">
         <img src={{game.image}}>
     </div>
@@ -21,13 +21,12 @@
         <p>{{game.description}}</p>
     </div>
 
-    <div class="btn-container">
-        <button (click)="goBack()">Go Back</button> 
+    <div class="btn-container">        
         @if(isLoggedIn){ 
             <!-- Only for registered user and creator of the game-->
             @if(isOwner){
-                <a routerLink="/games/edit/{{game._id}}">Edit</a>
-                <a (click)="delete()">Delete</a>
+                <a class="edit-button" routerLink="/games/edit/{{game._id}}">Edit</a>
+                <a class="delete-button" (click)="delete()">Delete</a>
             } @else {
                 @if(isLiked){
                     <!-- logged in user who has already sign up for the game-->
@@ -37,6 +36,7 @@
                     <a (click)="like()">Like</a>
                 }
             }
-        }    
+        }
+        <button class="go-back-button" (click)="goBack()">Go Back</button> 
     </div>
 </div>

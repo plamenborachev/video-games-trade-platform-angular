@@ -46,7 +46,7 @@
 
 .login-box input[type="email"]:focus,
 .login-box input[type="password"]:focus {
-  border-color: #e60012;
+  border-color: #00c3e3;
   outline: none;
 }
 

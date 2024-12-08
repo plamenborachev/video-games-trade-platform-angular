@@ -19,6 +19,11 @@
   min-height: 470px;
   /* text-align: left; */
   position: relative;
+  transition: transform 0.3s; 
+}
+
+.info:hover {
+  transform: translateY(-5px);
 }
 
 .info .title {

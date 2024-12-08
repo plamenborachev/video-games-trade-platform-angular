@@ -139,7 +139,7 @@
 .profile-game {
   display: flex;
   justify-content: space-evenly;
-  margin: 2%;
+  margin: 15%;
   margin-top: 20px;
   padding: 20px;
   background-color: #fff;
@@ -159,6 +159,12 @@
   font-size: 1rem;
   color: #555;
   margin-bottom: 15px;
+}
+
+.profile-game .created-game,
+.profile-game .like-game {
+  width: 35%;
+  text-align: center;
 }
 
 .profile-game .info {
