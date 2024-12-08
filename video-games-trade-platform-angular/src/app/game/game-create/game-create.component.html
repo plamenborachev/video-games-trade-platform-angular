@@ -160,6 +160,11 @@
                 required
                 minlength="5"
             >
+            @if (address) {
+                <div>Powered by
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API" target="_blank">Geolocation API</a>
+                    and <a href="https://developers.google.com/maps" target="_blank">Goggle Maps API</a></div>
+            }
 
             @if(inputGameLocation?.touched){
             <div>
@@ -208,8 +213,7 @@
                     [disabled]="form.invalid"
                     [style]="{ backgroundColor: form.invalid ? 'grey' : '#00c3e3' }"                    
                 >Create</button>  
-            </div>
-            
+            </div>            
         </form>
     </div>
 </section>

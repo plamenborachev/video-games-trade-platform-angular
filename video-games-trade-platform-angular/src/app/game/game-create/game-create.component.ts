@@ -36,6 +36,7 @@ export class GameCreateComponent implements OnInit{
 
   ngOnInit(): void {
     this.getGeoLocation();
+
   }
 
   getGeoLocation() {
