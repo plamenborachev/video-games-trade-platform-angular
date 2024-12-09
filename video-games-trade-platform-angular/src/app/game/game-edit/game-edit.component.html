@@ -52,7 +52,7 @@
                 id="ganre"
                 placeholder="Ganre.."
 
-                [class]="(inputGameGanre?.touched && inputGameGanre?.errors?.['minlength']) ? 'input-error': ''"
+                [class]="(inputGameGanre?.touched && inputGameGanre?.errors?.['required']) ? 'input-error': ''"
                 [(ngModel)]="game.ganre"
                 #inputGameGanre="ngModel"
                 required

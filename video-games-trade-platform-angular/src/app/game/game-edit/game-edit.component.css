@@ -49,13 +49,15 @@
 }
 
 .edit-container-info input:focus,
-.edit-container-info textarea:focus {
+.edit-container-info textarea:focus,
+.edit-container-info select:focus {
     border-color: #00c3e3;
     outline: none;
 }
 
 .edit-container-info input.input-error,
-.edit-container-info textarea.input-error {
+.edit-container-info textarea.input-error,
+.edit-container-info select.input-error {
     border-color: #ff0000; /* Error Red */
 }
 

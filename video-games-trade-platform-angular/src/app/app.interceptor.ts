@@ -22,13 +22,13 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req).pipe(
     catchError((err) => {
-      // if (err.status === 401) {
-      //   errorMsgService.setError(err);
-      //   router.navigate(['/login']);
-      // } else {
+      if (err.status === 401) {
+        errorMsgService.setError(err);
+        router.navigate(['/login']);
+      } else {
         errorMsgService.setError(err);
         router.navigate(['/error']);
-      // }
+      }
       return [err];
     })
   );

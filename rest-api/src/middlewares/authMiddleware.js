@@ -49,6 +49,7 @@ export const isAuth = (req, res, next) => {
 }
 
 export const isGuest = (req, res, next) => {
+    // console.log(req);
     if (req.user) {
     // if (!req.isAuthenticated) {
         // return res.redirect('/404');

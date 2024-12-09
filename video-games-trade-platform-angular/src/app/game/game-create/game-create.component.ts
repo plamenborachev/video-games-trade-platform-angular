@@ -45,11 +45,11 @@ export class GameCreateComponent implements OnInit{
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
-        console.log('Latitude:', latitude);
-        console.log('Longitude:', longitude);
+        // console.log('Latitude:', latitude);
+        // console.log('Longitude:', longitude);
 
         this.geocodingService.getAddress(latitude, longitude).subscribe(response => {
-          console.log(response);
+          // console.log(response);
           this.address = response.results[0]?.formatted_address;
         });
       },
@@ -71,11 +71,11 @@ export class GameCreateComponent implements OnInit{
       return;
     }
 
-    console.log(form.value);
+    // console.log(form.value);
     const { title, ganre, image, description, location, price } = form.value;
 
     this.apiService.createGame(title, ganre, image, description, location, price).subscribe(() => {
-        this.router.navigate(['/catalog']);
+        this.router.navigate(['/home']);
     })
   }
 }

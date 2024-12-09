@@ -17,6 +17,10 @@
     border-radius: 8px;
 }
 
+#not-found-page .not-found-page-container img{
+    cursor: pointer;
+}
+
 #not-found-page h1 {
     font-size: 4rem;
     color: #e60012;

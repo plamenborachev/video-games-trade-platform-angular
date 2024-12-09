@@ -52,13 +52,13 @@
                 name="ganre"
                 type="text"
                 id="ganre"
-                placeholder="Ganre.."
 
-                [class]="(inputGameGanre?.touched && inputGameGanre?.errors?.['minlength']) ? 'input-error': ''"
+                [class]="(inputGameGanre?.touched && inputGameGanre?.errors?.['required']) ? 'input-error': ''"
                 ngModel
                 #inputGameGanre="ngModel"
                 required
             >              
+                <option value="" disabled selected>Select game ganre...</option>
                 <option value="Action">Action</option>
                 <option value="Adventure">Adventure</option>
                 <option value="Arcade">Arcade</option>

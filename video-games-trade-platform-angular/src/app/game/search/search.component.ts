@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit{
       return;
     }
 
-    console.log(form.value);
+    // console.log(form.value);
 
     const { title, ganre } = form.value;
 
