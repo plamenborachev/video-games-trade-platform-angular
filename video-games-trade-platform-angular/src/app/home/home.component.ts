@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
 import { UserService } from '../user/user.service';
 import { LastGamesListComponent } from '../game/last-games-list/last-games-list.component';
-import { Title } from '@angular/platform-browser';
 import { animations } from '../animations/animations';
 
 @Component({

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
-import { UserService } from '../user.service';
 import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+
+import { matchPasswordsValidator } from '../../utils/match-passwords.validator';
+import { UserService } from '../user.service';
 import { animations } from '../../animations/animations';
 
 @Component({
@@ -103,6 +104,6 @@ export class RegisterComponent {
       .subscribe(() => {
         this.router.navigate(['/home']);
       });
-    this.form.reset();
+    // this.form.reset();
   }
 }

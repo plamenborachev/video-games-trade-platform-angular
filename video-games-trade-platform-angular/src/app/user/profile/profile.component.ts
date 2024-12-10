@@ -1,14 +1,14 @@
 import { Component, OnInit, Output } from '@angular/core';
+import {  RouterLink } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
 import { Game } from '../../types/game';
 import { ApiService } from '../../api.service';
-import { ProfileDetails, User, UserForAuth } from '../../types/user';
+import { ProfileDetails, UserForAuth } from '../../types/user';
 import { LoaderComponent } from '../../shared/loader/loader.component';
-import { Router, RouterLink } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 import { SlicePipe } from "../../shared/pipes/slice.pipe";
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
-import { GeolocationService } from '../../geolocation/geolocation.service';
 import { animations } from '../../animations/animations';
 
 @Component({
@@ -40,7 +40,6 @@ export class ProfileComponent implements OnInit{
     private apiService: ApiService,
     private titleService: Title,
     private userService: UserService,
-    private geolocationService: GeolocationService,
     ){
     this.titleService.setTitle("Profile");
   }  

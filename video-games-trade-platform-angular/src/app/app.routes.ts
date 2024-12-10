@@ -9,7 +9,10 @@ export const routes: Routes = [
 
     { path: 'login', loadComponent: () => import('./user/login/login.component').then(c => c.LoginComponent) },
     { path: 'register', loadComponent: () => import('./user/register/register.component').then(c => c.RegisterComponent) },
-    { path: 'profile', canActivate: [AuthGuard], loadComponent: () => import('./user/profile/profile.component').then(c => c.ProfileComponent) },
+    { path: 'profile',
+        canActivate: [AuthGuard],
+        loadComponent: () => import('./user/profile/profile.component').then(c => c.ProfileComponent)
+    },
 
     { path: 'games',
         children: [

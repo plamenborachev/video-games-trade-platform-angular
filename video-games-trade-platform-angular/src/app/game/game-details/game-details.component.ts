@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Game } from '../../types/game';
 import { ActivatedRoute, RouterLink, Router} from '@angular/router';
-import { ApiService } from '../../api.service';
-import { UserService } from '../../user/user.service';
-import { User } from '../../types/user';
 import { DatePipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+
+import { Game } from '../../types/game';
+import { ApiService } from '../../api.service';
+import { UserService } from '../../user/user.service';
+import { User } from '../../types/user';
 import { animations } from '../../animations/animations';
 
 @Component({

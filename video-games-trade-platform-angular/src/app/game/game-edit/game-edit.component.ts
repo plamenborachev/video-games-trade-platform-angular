@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Game } from '../../types/game';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../../api.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Location } from '@angular/common';
+
+import { Game } from '../../types/game';
+import { ApiService } from '../../api.service';
 import { animations } from '../../animations/animations';
 
 @Component({

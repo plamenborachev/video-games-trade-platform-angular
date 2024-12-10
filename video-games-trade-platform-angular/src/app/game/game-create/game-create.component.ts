@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../api.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { Location } from '@angular/common';
+
+import { ApiService } from '../../api.service';
 import { GeolocationService } from '../../geolocation/geolocation.service';
 import { GeocodingService } from '../../geolocation/geocoding.service';
-import { Location } from '@angular/common';
 import { animations } from '../../animations/animations';
+import { environment } from '../../../environments/environment.development';
 
 @Component({
   selector: 'app-game-create',
@@ -22,6 +24,7 @@ import { animations } from '../../animations/animations';
 })
 export class GameCreateComponent implements OnInit{
   address: string = "";
+  apiKey: string = environment.API_KEY;  
   
   constructor(
     private apiService: ApiService,

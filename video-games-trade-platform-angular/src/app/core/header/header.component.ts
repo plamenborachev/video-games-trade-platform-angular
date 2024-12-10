@@ -1,8 +1,8 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { UserService } from '../../user/user.service';
 import { TitleCasePipe } from '@angular/common';
-import { ErrorMessageComponent } from "../../shared/error-message/error-message.component";
+
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -21,6 +21,7 @@ export class HeaderComponent{
   }
 
   get isLoggedIn(): boolean {
+    // console.log('HeaderComponent => isLogged => ' + this.userService.isLogged);
     return this.userService.isLogged;
   }
 

@@ -1,0 +1,3 @@
+- The back-end is __Express.js__ with __Mongo DB__ as a database with __mongoose__ and __Mongo DB Compass__ under _free tier (500mb max)._
+- Run `npm install` to install needed dependencies in `node_moduls` folder.
+- Run `npm start` to start server on `http://localhost:3000/`

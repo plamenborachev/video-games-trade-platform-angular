@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UserService } from '../user/user.service';
 import { LoaderComponent } from '../shared/loader/loader.component';
 
@@ -17,9 +18,11 @@ export class AuthenticateComponent implements OnInit {
   ngOnInit(): void {
       this.userService.getProfile().subscribe({
         next: () => {
+          // console.log('AuthenticateComponent => isLogged => ' + this.userService.isLogged);
           this.isAuthenticating = false;
         },
-        error: () => {
+        error: (error) => {
+          console.log(error);
           this.isAuthenticating = false;
         },
         complete: () => {
