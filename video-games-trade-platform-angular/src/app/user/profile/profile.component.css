@@ -26,10 +26,15 @@
   border: 2px solid #e60012;
 }
 
-.user-info h1,
 .user-info h2 {
   margin: 5px 0;
   color: #00c3e3;
+  text-align: left;
+}
+
+.user-info h2 span{
+  margin: 5px 0;
+  color: #e60012;
 }
 
 .user-info a {

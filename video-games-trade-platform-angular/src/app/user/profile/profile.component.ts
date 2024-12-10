@@ -5,7 +5,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 import { Game } from '../../types/game';
 import { ApiService } from '../../api.service';
-import { ProfileDetails, User, UserForAuth } from '../../types/user';
+import { UserForAuth } from '../../types/user';
 import { LoaderComponent } from '../../shared/loader/loader.component';
 import { SlicePipe } from "../../shared/pipes/slice.pipe";
 import { UserService } from '../user.service';

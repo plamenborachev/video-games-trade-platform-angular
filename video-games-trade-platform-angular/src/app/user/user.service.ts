@@ -68,10 +68,10 @@ export class UserService implements OnDestroy{
         email,
         telephone,
       })
-      // .pipe(tap((user) => {
-      //   this.user$$.next(user);
-      //   console.log(user);
-      // }));
+      .pipe(tap((user) => {
+        this.user$$.next(user);
+        // console.log(user);
+      }));
   }
 
   get isLogged(): boolean {

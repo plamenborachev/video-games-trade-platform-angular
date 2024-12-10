@@ -6,14 +6,10 @@
                 <div class="user-logo">
                     <img src="./images/Mario.jpg" alt="avatar">
                 </div>
-                <!-- <h1 class="user-email"></h1> -->
-                <!-- <h2 class="created-game-count">Username: {{user.username}}</h2>
-                <h2 class="created-game-count">Email: {{user.email}}</h2>    
-                <h2 class="created-game-count">Tel: {{user.telephone}}</h2> -->
 
-                <h2>Username: {{user?.username}}</h2>
-                <h2>Email: {{user?.email}}</h2>
-                <h2>Tel: {{user?.telephone}}</h2>
+                <h2><span>Username:</span> {{user?.username}}</h2>
+                <h2><span>Email:</span> {{user?.email}}</h2>
+                <h2><span>Telephone:</span> {{user?.telephone}}</h2>
 
                 <a (click)="toggleEditMode()">Edit</a>
             </div>
