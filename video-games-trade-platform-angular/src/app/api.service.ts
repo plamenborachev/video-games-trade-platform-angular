@@ -32,10 +32,10 @@ export class ApiService {
         return this.http.get<Game>(url);
     }
 
-    getProfile(){
-        let url = '/api/profile';
-        return this.http.get(url);
-    }
+    // getProfile(){
+    //     let url = '/api/profile';
+    //     return this.http.get(url);
+    // }
 
     createGame(title: string, ganre: string, image: string, description: string, location: string, price: number){
         let url = '/api/games/create';

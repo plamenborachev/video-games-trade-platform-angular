@@ -5,7 +5,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 
 import { Game } from '../../types/game';
 import { ApiService } from '../../api.service';
-import { ProfileDetails, UserForAuth } from '../../types/user';
+import { ProfileDetails, User, UserForAuth } from '../../types/user';
 import { LoaderComponent } from '../../shared/loader/loader.component';
 import { SlicePipe } from "../../shared/pipes/slice.pipe";
 import { UserService } from '../user.service';
@@ -27,14 +27,7 @@ export class ProfileComponent implements OnInit{
   isLoading = false;
   gamesCreated: Game[] = [];
   gamesLiked: Game[] = [];
-  errorMessage: string = "";
-
   isEditMode: boolean = false;
-  profileDetails: ProfileDetails = {
-    username: '',
-    email: '',
-    telephone: '',
-  };
 
   constructor(
     private apiService: ApiService,
@@ -42,7 +35,7 @@ export class ProfileComponent implements OnInit{
     private userService: UserService,
     ){
     this.titleService.setTitle("Profile");
-  }  
+  }
 
   form = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.minLength(5),]),
@@ -51,22 +44,10 @@ export class ProfileComponent implements OnInit{
   });
 
   ngOnInit(): void {
-    this.user = this.userService.user!;
-   
-    // console.log(this.user);
-
-    const { username, email, telephone } = this.userService.user!;
-    this.profileDetails = { username, email, telephone };
-
-    this.form.setValue({
-      username,
-      email,
-      telephone,
+    this.userService.getProfile().subscribe((user) => {
+      this.user = user;
+      // console.log(this.user);
     });
-
-    // this.apiService.getProfile().subscribe((user) => {
-    //   this.user = user as User;
-    // });
 
     this.apiService.getAll().subscribe((games) => { 
       // console.log(games);
@@ -76,8 +57,38 @@ export class ProfileComponent implements OnInit{
   }
 
   toggleEditMode() {
+    this.userService.getProfile().subscribe((user) => {
+      this.user = user;
+      // console.log(this.user);
+    });
+
+    const { username, email, telephone } = this.user!;
+    // this.profileDetails = { username, email, telephone };
+
+    this.form.setValue({
+      username,
+      email,
+      telephone,
+    });
+
     this.isEditMode = !this.isEditMode;
   }
+
+  handleSaveProfile() {
+    if (this.form.invalid) {
+      return;
+    }
+
+    // this.profileDetails = this.form.value as ProfileDetails;
+    const { username, email, telephone } = this.form.value;
+
+    this.userService.updateProfile(username!, email!, telephone!,).subscribe(() => this.toggleEditMode());
+  }
+
+  onCancel(event: Event) {
+    event.preventDefault();
+    this.toggleEditMode();
+  }  
 
   isFieldTextMissing(controlName: string) {
     return (
@@ -106,22 +117,4 @@ export class ProfileComponent implements OnInit{
       this.form.get('telephone')?.errors?.['pattern']
     );
   }
-
-  handleSaveProfile() {
-    if (this.form.invalid) {
-      return;
-    }
-
-    this.profileDetails = this.form.value as ProfileDetails;
-    const { username, email, telephone } = this.profileDetails;
-
-    this.userService.updateProfile(username, email, telephone,).subscribe(() => {
-      this.toggleEditMode();
-    });
-  }
-
-  onCancel(event: Event) {
-    event.preventDefault();
-    this.toggleEditMode();
-  }  
 }

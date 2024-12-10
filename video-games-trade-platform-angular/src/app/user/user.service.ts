@@ -19,9 +19,7 @@ export class UserService implements OnDestroy{
     this.userSubscription = this.user$.subscribe((user) => {
       this.user = user;
     });
-  }
-
-  
+  }  
   
   login(email: string, password: string) {
     return this.http
@@ -70,7 +68,10 @@ export class UserService implements OnDestroy{
         email,
         telephone,
       })
-      .pipe(tap((user) => this.user$$.next(user)));
+      // .pipe(tap((user) => {
+      //   this.user$$.next(user);
+      //   console.log(user);
+      // }));
   }
 
   get isLogged(): boolean {

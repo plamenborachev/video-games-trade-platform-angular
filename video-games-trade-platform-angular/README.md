@@ -35,9 +35,13 @@ The application should provide Users (logged in) with the functionality to:
 - Home page, All Games page, Search page.
 - Create а new Game Offer [Create Game Offers].
 - Access game details page [Details] allowing him/her to:
-    + Like a game offer (if the current user is not the owner of the game).
-    + Delete or Edit the course depending on the user's authentication (only for the owner of the current course).
-- View their profile information by clicking on [`User's name` Profile]. On the profile page, the users see their username, email and telephone and the games they have created and their number, as well as the games they have liked and their number.
+    - Like a game offer (if the current user is not the owner of the game).
+    - Delete or Edit the course depending on the user's authentication (only for the owner of the current course).
+- View their profile information by clicking on [`User's name` Profile]. On the profile page, the users can:
+    - see their username, email and telephone;
+    - edit their username, email and telephone after clicking 'Edit' button;
+    - see the games they have created and their number;
+    - see the games they have liked and their number.
 
 ### Interfaces
 
