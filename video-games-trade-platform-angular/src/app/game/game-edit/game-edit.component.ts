@@ -7,6 +7,8 @@ import { Location } from '@angular/common';
 import { Game } from '../../types/game';
 import { ApiService } from '../../api.service';
 import { animations } from '../../animations/animations';
+import { User } from '../../types/user';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'app-game-edit',
@@ -22,10 +24,12 @@ import { animations } from '../../animations/animations';
 })
 export class GameEditComponent {
   game = {} as Game;
+  user = {} as User;
 
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
+    private userService: UserService,
     private router: Router,
     private titleService: Title,
     private location: Location,
@@ -39,12 +43,11 @@ export class GameEditComponent {
     this.apiService.getOne(id).subscribe((game) => {
       // console.log(result);
       
-      this.game = game;
-      // this.owner = Object.values(result).at(1);
-      // this.isOwner = Object.values(result).at(2);
-      // this.liked = Object.values(result).at(3);
-      // this.likedBy = Object.values(result).at(4);      
+      this.game = game; 
     });
+
+    this.user = this.userService.user as User;
+    // console.log(this.user);
   }
 
   goBack() {
@@ -53,23 +56,23 @@ export class GameEditComponent {
 
   editGame(form: NgForm) {
     // console.log(form);
-    // var result = confirm(`Are you sure you want to save changes to '${this.game.title}'?`);
-    
-    // if (result) {
-      if (form.invalid) {
-        console.error('Invalid edit game form');
-        return;
-      }
-      // console.log(form.value);
+    if (this.game.owner._id != this.user._id){
+      console.error('You are not creator of this game and you can not edit it!');
+      this.router.navigate([`/games/details/${this.game._id}`]);
+      return;
+    }
   
-      const {title, ganre, image, description, location, price } = form.value;
-  
-      this.apiService.edit(this.game._id, title, ganre, image, description, location, price).subscribe(() => {
-          // this.router.navigate(['/catalog']);
-          this.router.navigate([`/games/details/${this.game._id}`]);
-      })
-    // } else {
-    //   this.router.navigate([`/games/details/${this.game._id}`]);
-    // }
+    if (form.invalid) {
+      console.error('Invalid edit game form');
+      return;
+    }
+    // console.log(form.value);
+
+    const {title, ganre, image, description, location, price } = form.value;
+
+    this.apiService.edit(this.game._id, title, ganre, image, description, location, price).subscribe(() => {
+        // this.router.navigate(['/catalog']);
+        this.router.navigate([`/games/details/${this.game._id}`]);
+    })
   }
 }
