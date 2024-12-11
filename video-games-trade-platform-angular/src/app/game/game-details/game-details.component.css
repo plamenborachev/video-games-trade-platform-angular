@@ -33,7 +33,13 @@
 .details-container-info h3,
 .details-container-info h4 {
   margin: 5px 0;
-  color: #333;
+  color: #007a99;
+}
+
+.details-container-info h3 span,
+.details-container-info h4 span {
+  /* margin: 5px 0; */
+  color: #e60012;
 }
 
 .details-container-info h2 {
@@ -44,7 +50,7 @@
 .details-container-content p {
   font-size: 1rem;
   line-height: 1.6;
-  color: black;
+  color: #007a99;
   margin-bottom: 20px;
   text-align: justify;
 }

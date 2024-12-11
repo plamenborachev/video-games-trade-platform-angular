@@ -166,6 +166,11 @@
   margin-bottom: 15px;
 }
 
+.profile-game .created-game-count span,
+.profile-game .like-game-count span{
+  color: #e60012;
+}
+
 .profile-game .created-game,
 .profile-game .like-game {
   width: 35%;

@@ -7,12 +7,12 @@
                 <div class="info">
                     <img src="{{game.image}}" alt="{{game.title}}">
                     <h2 class="title">{{game.title}}</h2>                
-                    <h4 class="seller">Seller: {{game.owner.username}}</h4>                    
-                    <h4 class="price">Price: €{{game.price}}</h4>
-                    <h4 class="location">Location: {{game.location}}</h4>
-                    <h4 class="added-on">Added: {{game.createdAt | elapsedTime}}</h4>
-                    <h4 class="likes">Likes: {{game.likesList.length}}</h4>
-                    <h4 class="likes">Description: {{game.description | slice: 50}}</h4>
+                    <h4 class="seller"><span>Seller:</span> {{game.owner.username}}</h4>                    
+                    <h4 class="price"><span>Price:</span> €{{game.price}}</h4>
+                    <h4 class="location"><span>Location:</span> {{game.location | slice: 20}}</h4>
+                    <h4 class="added-on"><span>Added:</span> {{game.createdAt | elapsedTime}}</h4>
+                    <h4 class="likes"><span>Likes:</span> {{game.likesList.length}}</h4>
+                    <h4>{{game.description | slice: 50}}</h4>
                     <div class="learn-more">
                         <button [routerLink]="['/games/details', game._id]">Details...</button>
                     </div>

@@ -15,12 +15,12 @@
                 
                     <article class="all-game-card-content">
                         <h2>{{game.title}}</h2>
-                        <h3>Seller: {{game.owner.username}}</h3>
-                        <h3>Price: €{{game.price}}</h3>
-                        <h3>Location: {{game.location}}</h3>
-                        <h3>Added: {{game.createdAt | elapsedTime}}</h3>
-                        <h3>Likes: {{game.likesList.length}}</h3>
-                        <h3>Description: {{game.description | slice: 50}}</h3>
+                        <h3><span>Seller:</span> {{game.owner.username}}</h3>
+                        <h3><span>Price:</span> €{{game.price}}</h3>
+                        <h3><span>Location:</span> {{game.location | slice: 20}}</h3>
+                        <h3><span>Added:</span> {{game.createdAt | elapsedTime}}</h3>
+                        <h3><span>Likes:</span> {{game.likesList.length}}</h3>
+                        <h3>{{game.description | slice: 50}}</h3>
                     </article>
                 
                     <article class="all-game-card-buttons">

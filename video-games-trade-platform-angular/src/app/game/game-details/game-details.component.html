@@ -4,15 +4,15 @@
     </div>
     <div class="details-container-info">
         <h2>{{game.title}}</h2>
-        <h3>Ganre: {{game.ganre}}</h3>
-        <h3>Price: €{{game.price}}</h3>
-        <h3>By: {{game.owner.username}}</h3>
-        <h3>Email: {{game.owner.email}}</h3>
-        <h3>Tel: {{game.owner.telephone}}</h3>
-        <h3>Location: {{game.location}}</h3>
-        <h3>Added on: {{game.createdAt | date: 'dd-MM-yyyy HH:mm'}}</h3>
+        <h3><span>Ganre:</span> {{game.ganre}}</h3>
+        <h3><span>Price:</span> €{{game.price}}</h3>
+        <h3><span>By:</span> {{game.owner.username}}</h3>
+        <h3><span>Email:</span> {{game.owner.email}}</h3>
+        <h3><span>Tel:</span> {{game.owner.telephone}}</h3>
+        <h3><span>Location:</span> {{game.location}}</h3>
+        <h3><span>Added on:</span> {{game.createdAt | date: 'dd-MM-yyyy HH:mm'}}</h3>
         @if(game.likesList.length > 0){
-            <h4>Liked By: {{likedBy}}</h4>
+            <h4><span>Liked by:</span> {{likedBy}}</h4>
         } @else {
             <h4>Nobody liked this game yet!</h4>
         }        

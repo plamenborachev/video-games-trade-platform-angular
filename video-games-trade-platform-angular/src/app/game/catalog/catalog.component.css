@@ -59,6 +59,12 @@
   margin: 5px 0;
 }
 
+.all-game-card-content h3 span{
+  font-size: 1rem;
+  color: #e60012;
+  margin: 5px 0;
+}
+
 .all-game-card-buttons {
   padding: 10px;
   text-align: center;

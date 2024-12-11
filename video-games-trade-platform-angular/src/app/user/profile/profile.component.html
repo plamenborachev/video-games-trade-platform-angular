@@ -102,7 +102,7 @@
 <section class="profile-game" @fadeInSlow>
     <div class="created-game">
         <h2 class="section-title">CREATED</h2>
-        <h2 class="created-game-count">Total Created Games: {{gamesCreated.length}}</h2>
+        <h2 class="created-game-count">Total Created Games: <span>{{gamesCreated.length}}</span></h2>
 
         @if(isLoading){
             <app-loader />
@@ -125,7 +125,7 @@
 
     <div class="like-game">
         <h2 class="section-title">FAVORITES</h2>
-        <h2 class="like-game-count">Total Liked Games: {{gamesLiked.length}}</h2>
+        <h2 class="like-game-count">Total Liked Games: <span>{{gamesLiked.length}}</span></h2>
         @if(isLoading){
             <app-loader />
         } @else {

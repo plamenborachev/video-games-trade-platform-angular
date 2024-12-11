@@ -39,6 +39,12 @@
   margin: 5px 0;
 }
 
+.info h4 span {
+  font-size: 1rem;
+  color: #e60012;
+  margin: 5px 0;
+}
+
 .info .learn-more a {
   color: #00c3e3; /* Nintendo Blue */
   font-weight: bold;
