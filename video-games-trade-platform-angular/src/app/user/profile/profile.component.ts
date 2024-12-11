@@ -63,7 +63,6 @@ export class ProfileComponent implements OnInit{
     });
 
     const { username, email, telephone } = this.user!;
-    // this.profileDetails = { username, email, telephone };
 
     this.form.setValue({
       username,
@@ -79,7 +78,6 @@ export class ProfileComponent implements OnInit{
       return;
     }
 
-    // this.profileDetails = this.form.value as ProfileDetails;
     const { username, email, telephone } = this.form.value;
 
     this.userService.updateProfile(username!, email!, telephone!,).subscribe(() => this.toggleEditMode());

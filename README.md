@@ -95,11 +95,6 @@ The application should provide Users (logged in) with the functionality to:
 - password - string;
 - telephone - string;
 
-#### ProfileDetails
-- username - string;
-- email - string;
-- telephone - string;
-
 ### Additional Features 
 
 - Lazy loading
